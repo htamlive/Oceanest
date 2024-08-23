@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ce8c5473c617fa4bbf854f89adae254, type: 3}
+  m_Name: Laricyte
+  m_EditorClassIdentifier: 
+  id: 12
+  itemType: 0
+  size: {x: 2, y: 2}
+  sprite: {fileID: -8984408212918354977, guid: d5ae4bc950bca1048a51b16b07b1f69a, type: 3}
+  worldPrefab: {fileID: 784521175312108428, guid: 87712e398cc811b469bc0bf1c4c440b0, type: 3}
+  description: 
+  scannable: 1
+  scanPercentage: 0
+  scanRate: 10

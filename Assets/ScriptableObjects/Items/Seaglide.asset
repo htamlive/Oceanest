@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ce8c5473c617fa4bbf854f89adae254, type: 3}
+  m_Name: Seaglide
+  m_EditorClassIdentifier: 
+  id: 16
+  itemType: 1
+  size: {x: 1, y: 1}
+  sprite: {fileID: 759695541241931541, guid: 81f6861e3134b534abc7577e1c6bf286, type: 3}
+  worldPrefab: {fileID: 1028083919408097262, guid: d327abccfe9a72542a9f8dc7af7ddbfa, type: 3}
