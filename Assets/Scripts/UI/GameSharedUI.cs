@@ -36,11 +36,11 @@ public class GameSharedUI : MonoBehaviour
 
     private void Update()
     {
-        coinEased += (GameDataManager.GetCoins() - coinEased) * Time.deltaTime * 5f;
-        for (int i = 0; i < coinsUIText.Length; i++)
-        {
-            SetCoinsText(coinsUIText[i], GameDataManager.GetCoins());
-        }
+        //coinEased += (GameDataManager.GetCoins() - coinEased) * Time.deltaTime * 5f;
+        //for (int i = 0; i < coinsUIText.Length; i++)
+        //{
+        //    SetCoinsText(coinsUIText[i], GameDataManager.GetCoins());
+        //}
 
         //if (coinEased >= GameDataManager.GetCoins())
         //{
