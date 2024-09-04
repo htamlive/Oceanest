@@ -21,7 +21,7 @@ public class Submarine : MonoBehaviour {
     float yawVelocity;
     float pitchVelocity;
     float currentSpeed;
-    public Material propSpinMat;
+    public Transform spinFan;
 
     void Start () {
         currentSpeed = maxSpeed;
@@ -60,6 +60,7 @@ public class Submarine : MonoBehaviour {
 
         //propeller.Rotate (Vector3.forward * Time.deltaTime * propellerSpeedFac * speedPercent, Space.Self);
         //propSpinMat.color = new Color (propSpinMat.color.r, propSpinMat.color.g, propSpinMat.color.b, speedPercent * .3f);
+        spinFan.Rotate(Vector3.right, 50);
 
     }
 }
