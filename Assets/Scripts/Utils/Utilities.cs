@@ -12,6 +12,10 @@ public enum ImageFormat
 }
 public static class Utilities
 {
+    public static bool CheckPlatform(RuntimePlatform platform)
+    {
+        return Application.platform == platform;
+    }
     public static void SaveSerializedObject(string filename, object obj)
     {
         BinaryFormatter bf = new();
