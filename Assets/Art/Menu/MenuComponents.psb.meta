@@ -94,7 +94,7 @@ ScriptedImporter:
     spritePosition: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: Button Circle
+  - name: Button Circle Select
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -102,6 +102,27 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 1711
+      y: 4
+      width: 38
+      height: 38
+    spriteID: 07488d6f067f3da4abe5d7a4fc496740
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1711, y: 4}
+    spritePosition: {x: 158, y: 136}
+  - name: Button Circle
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1757
       y: 4
       width: 38
       height: 38
@@ -113,13 +134,13 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 1711, y: 4}
+    uvTransform: {x: 1757, y: 4}
     spritePosition: {x: 158, y: 136}
   - name: Button
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 66, y: 0, z: 57, w: 0}
     rect:
       serializedVersion: 2
       x: 1371
@@ -193,13 +214,23 @@ ScriptedImporter:
   resliceFromLayer: 0
   mosaicPSDLayers: []
   rigPSDLayers:
+  - name: Button Circle Select
+    spriteName: Button Circle Select
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 07488d6f067f3da4abe5d7a4fc496740
+    layerID: 30
+    mosaicPosition: {x: 1711, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: Button Circle
     spriteName: Button Circle
     isGroup: 0
     parentIndex: -1
     spriteID: 709a9c7cdcd6d804c9a8d350f8963a2d
     layerID: 24
-    mosaicPosition: {x: 1711, y: 4}
+    mosaicPosition: {x: 1757, y: 4}
     flatten: 0
     isImported: 1
     isVisible: 1
