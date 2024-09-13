@@ -273,10 +273,7 @@ public class ShopUI : MonoBehaviour
     void CloseShop()
     {
         shopUI.SetActive(false);
-        if (Application.platform == RuntimePlatform.Android)
-        {
-            mobileButton.SetActive(true);
-        }
+
         foreach (var item in disableCoinViews)
         {
             item.SetActive(true);
