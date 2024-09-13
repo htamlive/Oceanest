@@ -452,7 +452,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2906521772104054097, guid: 9cfd4d33225f6aa48bd99f73c8bd0d0a, type: 3}
       propertyPath: parallaxAmountX
-      value: 0.02
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906521772104054097, guid: 9cfd4d33225f6aa48bd99f73c8bd0d0a, type: 3}
+      propertyPath: parallaxAmountY
+      value: -0.06
       objectReference: {fileID: 0}
     - target: {fileID: 4313268991194317400, guid: 9cfd4d33225f6aa48bd99f73c8bd0d0a, type: 3}
       propertyPath: parallaxAmountX
@@ -2410,12 +2414,28 @@ PrefabInstance:
       value: Tutorial Button
       objectReference: {fileID: 0}
     - target: {fileID: 8483701301699446101, guid: eca6b2e043167094196a88953505a30a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8483701301699446101, guid: eca6b2e043167094196a88953505a30a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1428702189}
     - target: {fileID: 8483701301699446101, guid: eca6b2e043167094196a88953505a30a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1285968901}
+    - target: {fileID: 8483701301699446101, guid: eca6b2e043167094196a88953505a30a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetSelectedGameObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 8483701301699446101, guid: eca6b2e043167094196a88953505a30a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: EnterTutorial
+      objectReference: {fileID: 0}
+    - target: {fileID: 8483701301699446101, guid: eca6b2e043167094196a88953505a30a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: MenuHandler, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8483701301699446101, guid: eca6b2e043167094196a88953505a30a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument

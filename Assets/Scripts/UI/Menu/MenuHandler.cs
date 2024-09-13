@@ -36,6 +36,11 @@ public class MenuHandler : MonoBehaviour {
         SceneManager.LoadScene(playScreen);
     }
 
+    public void EnterTutorial()
+    {
+        SceneManager.LoadScene("Tutorial");
+    }
+
     public void NewGame()
     {
         //GameDataManager.ResetData();
@@ -56,14 +61,6 @@ public class MenuHandler : MonoBehaviour {
         }
     }
 
-    private void UpdateGameMode(int playerCount)
-    {
-
-        if (continueButton)
-        {
-            //continueButton.SetActive(GameDataManager.ReloadData());
-        }
-    }
 
 
 
