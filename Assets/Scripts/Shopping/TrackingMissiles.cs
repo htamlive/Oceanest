@@ -6,5 +6,9 @@ using UnityEngine;
 [System.Serializable]
 public class TrackingMissiles : ShoppingItem
 {
-
+    public override void Purchase()
+    {
+        isPurchased = true;
+        GameDataManager.TrackingMissilesStatus = true;
+    }
 }

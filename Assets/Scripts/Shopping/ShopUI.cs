@@ -48,27 +48,15 @@ public class ShopUI : MonoBehaviour
     int newSelectedItemIndex = 0;
     int previousSelectedItemIndex = 0;
 
+    bool isInSandBox = false;
+
     void Start()
     {
         //Move Fx to the exact same position of the coin image (for different screen sizes)
         //purchaseFx.transform.position = purchaseFxPos.position;
         
         AddShopEvents();
-
-        //Fill the shop's UI list with items
         GenerateShopItemsUI();
-
-        //Set selected character in the playerDataManager .
-        //SetSelectedItem();
-
-        //Select UI item
-        //SelectItemUI(GameDataManager.GetSelectedCharacterIndex());
-
-        //update player skin (Main menu)
-        //ChangePlayerSkin();
-
-        //Auto scroll to selected character  in the shop
-        //AutoScrollShopList(GameDataManager.GetSelectedCharacterIndex());
     }
 
     private void Update()
@@ -76,7 +64,7 @@ public class ShopUI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             bool isActive = shopUI.activeInHierarchy;
-            shopUI.SetActive(!isActive);
+            SetShopStatus(!isActive);
         }
     }
 
@@ -84,11 +72,11 @@ public class ShopUI : MonoBehaviour
     void GenerateShopItemsUI()
     {
         ////Loop throw save purchased items and make them as purchased in the Database array
-        //for (int i = 0; i < GameDataManager.GetAllPurchasedItem().Count; i++)
-        //{
-        //    int purchasedCharacterIndex = GameDataManager.GetPurchasedItem(i);
-        //    shoppingItemDB.MarkPurchased(purchasedCharacterIndex);
-        //}
+        for (int i = 0; i < GameDataManager.GetAllPurchasedItem().Count; i++)
+        {
+            int purchasedCharacterIndex = GameDataManager.GetPurchasedItem(i);
+            shoppingItemDB.MarkPurchased(purchasedCharacterIndex);
+        }
 
         ////Delete itemTemplate after calculating item's Height :
         itemHeight = ShopItemsContainer.GetChild(0).GetComponent<RectTransform>().sizeDelta.y;
@@ -121,17 +109,14 @@ public class ShopUI : MonoBehaviour
 
             if (item.isPurchased)
             {
-                //Character is Purchased
                 uiItem.SetItemAsPurchased();
                 //uiItem.OnItemSelect(i, OnItemSelected);
             }
             else
             {
-                //Character is not Purchased yet
                 uiItem.OnItemPurchase(i, OnItemPurchased);
             }
 
-            //Resize Items Container
             ShopItemsContainer.GetComponent<RectTransform>().sizeDelta =
                 Vector2.up * ((itemHeight + itemSpacing) * shoppingItemDB.ItemsCount + itemSpacing);
 
@@ -141,31 +126,6 @@ public class ShopUI : MonoBehaviour
 
     }
 
-    //void OnItemSelected(int index)
-    //{
-    //    // Select item in the UI
-    //    SelectItemUI(index);
-
-    //    //Save Data
-    //    GameDataManager.SetSelectedItem(shoppingItemDB.GetItem(index), index);
-
-    //    //Change Player Skin
-    //    ChangePlayerSkin();
-    //}
-
-    //void SelectItemUI(int itemIndex)
-    //{
-    //    previousSelectedItemIndex = newSelectedItemIndex;
-    //    newSelectedItemIndex = itemIndex;
-
-    //    ShoppingItemUI prevUiItem = GetItemUI(previousSelectedItemIndex);
-    //    ShoppingItemUI newUiItem = GetItemUI(newSelectedItemIndex);
-
-    //    prevUiItem.DeselectItem();
-    //    newUiItem.SelectItem();
-
-    //}
-
     ShoppingItemUI GetItemUI(int index)
     {
         return ShopItemsContainer.GetChild(index).GetComponent<ShoppingItemUI>();
@@ -173,44 +133,35 @@ public class ShopUI : MonoBehaviour
 
     void OnItemPurchased(int index)
     {
-        ShoppingItem character = shoppingItemDB.GetItem(index);
+        ShoppingItem shoppingItem = shoppingItemDB.GetItem(index);
         ShoppingItemUI uiItem = GetItemUI(index);
 
-        //if (GameDataManager.CanSpendCoins(character.price))
-        //{
-        //    //Proceed with the purchase operation
-        //    GameDataManager.SpendCoins(character.price);
+        if (GameDataManager.CanSpendCoins(shoppingItem.price))
+        {
+            GameDataManager.SpendCoins(shoppingItem.price);
 
-        //    //Play purchase FX
-        //    purchaseFx.Play();
+            purchaseFx.Play();
 
-        //    //Update Coins UI text
-        //    GameSharedUI.Instance.UpdateCoinsUIText();
+            GameSharedUI.Instance.UpdateCoinsUIText();
 
-        //    //Update DB's Data
-        //    shoppingItemDB.PurchaseItem(index);
+            //Update DB's Data
+            shoppingItemDB.PurchaseItem(index);
 
-        //    if (shoppingItemDB.IsPurchased(index)){
-        //        uiItem.SetItemAsPurchased();
-        //        GameDataManager.AddPurchasedCharacter(index);
-        //    }
-        //    //uiItem.OnItemSelect(index, OnItemSelected);
+            if (shoppingItemDB.IsPurchased(index))
+            {
+                uiItem.SetItemAsPurchased();
+                GameDataManager.AddPurchasedCharacter(index);
+            }
+        }
+        else
+            {
+                AnimateNoMoreCoinsText();
+                uiItem.AnimateShakeItem();
+            }
+        }
 
-        //    //Add purchased item to Shop Data
-            
-           
-
-        //}
-        //else
-        //{
-        //    //No enough coins..
-        //    AnimateNoMoreCoinsText();
-        //    uiItem.AnimateShakeItem();
-        //}
-    }
-
-    void AnimateNoMoreCoinsText()
-    {
+       void AnimateNoMoreCoinsText() 
+    { 
         // Complete animations (if it's running)
         noEnoughCoinsText.transform.DOComplete();
         noEnoughCoinsText.DOComplete();
@@ -238,6 +189,11 @@ public class ShopUI : MonoBehaviour
         //scrollUpButton.onClick.AddListener(OnScollUpClicked);
     }
 
+    void CloseShop()
+    {
+        SetShopStatus(false);
+    }
+
     void OnScollUpClicked()
     {
         scrollRect.DOVerticalNormalizedPos(1f, .5f).SetEase(Ease.OutBack);
@@ -259,24 +215,16 @@ public class ShopUI : MonoBehaviour
             bottomScrollFade.SetActive(false);
     }
 
-    void OpenShop()
+
+
+    void SetShopStatus(bool isOpening)
     {
-        Debug.Log("<color=green>Open Shop</color>");
-        shopUI.SetActive(true);
-        mobileButton.SetActive(false);
+        shopUI.SetActive(isOpening);
         foreach (var item in disableCoinViews)
         {
-            item.SetActive(false);
+            item.SetActive(!isOpening);
         }
     }
 
-    void CloseShop()
-    {
-        shopUI.SetActive(false);
 
-        foreach (var item in disableCoinViews)
-        {
-            item.SetActive(true);
-        }
-    }
 }

@@ -18,14 +18,6 @@ public class MenuHandler : MonoBehaviour {
 
     public GameObject continueButton;
 
-
-
-    private void Start()
-    {
-    }
-
-
-
     public void QuitGame()
     {
         Application.Quit();
@@ -38,17 +30,19 @@ public class MenuHandler : MonoBehaviour {
 
     public void EnterTutorial()
     {
+        GameDataManager.EnterTutorialMode();
         SceneManager.LoadScene("Tutorial");
     }
 
     public void NewGame()
     {
-        //GameDataManager.ResetData();
+        GameDataManager.ResetData();
         LoadScene();
     }
 
     public void ContinueGame()
     {
+        GameDataManager.LoadData();
         LoadScene();
     }
 
@@ -56,14 +50,9 @@ public class MenuHandler : MonoBehaviour {
     {
         if (GameDataManager.LoadStenoData())
         {
-
             LoadScene();
         }
     }
-
-
-
-
 
     public void TestLoadFromImage()
     {

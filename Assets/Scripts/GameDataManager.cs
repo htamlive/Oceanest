@@ -18,7 +18,10 @@ public class PlayerData
 {
     public int coins = 0;
     public int health = 100;
-
+    public bool hasDoubleMissiles = false;
+    public bool hasTrackingMissiles = false;
+    public float[] position = { 0, 0, 0 };
+    public float[] rotation = { 0, 0, 0 };
 }
 
 [System.Serializable]
@@ -31,37 +34,13 @@ public class GameData
 public static class GameDataManager
 {
     static GameData gameData = new();
-    //    //public static InventoryData inventoryData;
-    //    //public static InventoryData storageInventoryData;
-    //    //public static PlayerPositionOnGrid playerPositionOnGrid;
-    //    public static String currentSceneName;
 
-    //    //static readonly ShoppingItem selectedItem;
+    static readonly string GameDataPath = "GameData.txt";
 
-    //    static GameDataManager()
-    //    {
-    //        ReloadData();
-    //    }
-
-
-    //    //Player Data Methods -----------------------------------------------------------------------------
-    //    //public static ShoppingItem GetSelectedItem()
-    //    //{
-    //    //    return selectedItem;
-    //    //}
-
-    //    //public static void SetSelectedItem(ShoppingItem item, int index)
-    //    //{
-    //    //    selectedItem = item;
-    //    //    playerGamePlayData.selectedCharacterIndex = index;
-    //    //    SavePlayerData();
-    //    //}
-
-    //    //public static int GetSelectedCharacterIndex()
-    //    //{
-    //    //    return playerGamePlayData.selectedCharacterIndex;
-    //    //}
-
+    static public void EnterTutorialMode()
+    {
+        gameData = new();
+    }
     public static int GetCoins()
     {
         return gameData.playerData.coins;
@@ -74,267 +53,86 @@ public static class GameDataManager
         SaveData();
     }
 
-    //    public static bool CanSpendCoins(int amount, int playerIndex = 0)
-    //    {
-    //        return (PlayersGamePlayData[playerIndex].coins >= amount);
-    //    }
+    public static bool CanSpendCoins(int amount)
+    {
+        return (GetCoins() >= amount);
+    }
 
 
-    //    public static void SpendCoins(int amount, int playerIndex = 0)
-    //    {
-    //        PlayersGamePlayData[playerIndex].coins -= amount;
-    //        SavePlayerData();
-    //    }
+    public static void SpendCoins(int amount, int playerIndex = 0)
+    {
+        gameData.playerData.coins -= amount;
+        SaveData();
+    }
 
-    //    public static void AddHealth(int amount, int playerIndex = 0)
-    //    {
+    public static void AddHealth(int amount, int playerIndex = 0)
+    {
+        int health = gameData.playerData.health;
 
-    //        PlayersGamePlayData[playerIndex].health = Mathf.Clamp(PlayersGamePlayData[playerIndex].health + amount, 0, 100);
-    //        PlayerControl.GetInstanceAtIndex(playerIndex).health = PlayersGamePlayData[playerIndex].health;
-    //        //Debug.Log("Health: " + PlayersGamePlayData[playerIndex].health);
-    //        SavePlayerData();
-    //    }
-
-
-    //    public static void HealPlayer(int amount, int playerIndex = 0)
-    //    {
-    //        AddHealth(amount, playerIndex);
-    //        PlayerControl.GetInstanceAtIndex(playerIndex).effects.HealEffect();
-
-    //    }
-
-    //    public static void SetHealth(int amount, int playerIndex = 0)
-    //    {
-    //        PlayersGamePlayData[playerIndex].health = Mathf.Clamp(amount, 0, 100);
-    //        SavePlayerData();
-    //    }
-
-    //    public static int GetHealth(int playerIndex = 0)
-    //    {
-    //        return PlayersGamePlayData[playerIndex].health;
-    //    }
-
-    //    public static bool Dash(int playerIndex = 0)
-    //    {
-    //        return PlayersGamePlayData[playerIndex].dash;
-    //    }
-
-    //    public static bool DoubleJump(int playerIndex = 0)
-    //    {
-    //        return PlayersGamePlayData[playerIndex].doubleJump;
-    //    }
-
-    //    public static void AchieveDash(bool achieve)
-    //    {
-    //        int playerCount = PlayerPrefs.GetInt("PlayerCount", 1);
-    //        for (int i = 0; i < playerCount; i++)
-    //        {
-    //            PlayersGamePlayData[i].dash = achieve;
-    //            PlayerControl.GetInstanceAtIndex(i).skills.CanDash = achieve;
-    //        }
-    //        SavePlayerData();
-    //    }
-
-    //    public static void AchieveDoubleJump(bool achieve)
-    //    {
-    //        int playerCount = PlayerPrefs.GetInt("PlayerCount", 1);
-    //        for (int i = 0; i < playerCount; i++)
-    //        {
-    //            PlayersGamePlayData[i].doubleJump = achieve;
-    //            PlayerControl.GetInstanceAtIndex(i).skills.CanDoubleJump = achieve;
-    //        }
-    //        SavePlayerData();
-    //    }
-
-    //    static string GetPlayerDataFileName(int playerIndex, int playerCount)
-    //    {
-    //        return "player" + playerIndex + "-playmode" + playerCount + "-data.txt";
-    //    }
-
-    //    static string GetShopDataFileName(int playerCount)
-    //    {
-    //        return "shop-playmode" + playerCount + "-data.txt";
-    //    }
-
-    //    static string GetInventoryDataFileName(int playerCount)
-    //    {
-    //        return "inventoryData-playmode" + playerCount + ".txt";
-    //    }
-
-    //    static string GetStorageInventoryDataFileName(int playerCount)
-    //    {
-    //        return "storageInventoryData-playmode" + playerCount + ".txt";
-    //    }
-
-    //    static string GetPlayerPositionOnGridFileName(int playerCount)
-    //    {
-    //        return "playerPositionOnGrid-playmode" + playerCount + ".txt";
-    //    }
-
-    //    static public bool ReloadData()
-    //    {
-
-    //        return LoadPlayerData() && LoadItemsShopData() && LoadMapManagerData();
-    //    }
+        health = Mathf.Clamp(health + amount, 0, 100);
+        gameData.playerData.health = health;
+        //Debug.Log("Health: " + PlayersGamePlayData[playerIndex].health);
+        SaveData();
+    }
 
 
+    public static void HealPlayer(int amount, int playerIndex = 0)
+    {
+        AddHealth(amount, playerIndex);
+        //PlayerControl.GetInstanceAtIndex(playerIndex).effects.HealEffect();
 
-    //    static public void ResetData()
-    //    {
-    //        int playerCount = PlayerPrefs.GetInt("PlayerCount", 1);
-    //        PlayersGamePlayData = new(playerCount);
-    //        for (int i = 0; i < playerCount; i++)
-    //        {
-    //            PlayersGamePlayData.Add(new PlayerGamePlayData());
-    //        }
-    //        SavePlayerData();
+    }
 
-    //        itemsShopData = new();
-    //        SaveItemsShopData();
+    public static void SetHealth(int amount)
+    {
+        gameData.playerData.health = Mathf.Clamp(amount, 0, 100);
+        SaveData();
+    }
 
-    //        //playerPositionOnGrid.playerPosition = new(0, 0);
-    //        //playerPositionOnGrid.cameFromDirection = DoorInfo.Direction.Down;
+    public static int GetHealth()
+    {
+        return gameData.playerData.health;
+    }
 
-    //        inventoryData = null;
-    //        playerPositionOnGrid = null;
-    //        currentSceneName = null;
-    //        storageInventoryData = null;
+    public static bool DoubleMissilesStatus
+    {
+        set { gameData.playerData.hasDoubleMissiles = value; SaveData(); }
+        get { return gameData.playerData.hasDoubleMissiles; }
+    }
 
-    //        SaveMapManagerData(inventoryData, storageInventoryData, playerPositionOnGrid, currentSceneName);
+    public static bool TrackingMissilesStatus
+    {
+        set { gameData.playerData.hasTrackingMissiles = value; SaveData(); }
+        get { return gameData.playerData.hasTrackingMissiles; }
+    }
 
-    //    }
-
-    //    public static void SaveMapManagerData(InventoryData inventoryData, InventoryData storageInventoryData, PlayerPositionOnGrid playerPositionOnGrid, string currentSceneName)
-    //    {
-    //        int playerCount = PlayerPrefs.GetInt("PlayerCount", 1);
-    //        if(inventoryData != null)
-    //        {
-    //            GameDataManager.inventoryData = inventoryData;
-    //            Utilities.SaveSerializedObject(GetInventoryDataFileName(playerCount), inventoryData);
-    //        }
-    //        if(storageInventoryData != null)
-    //        {
-    //            GameDataManager.storageInventoryData = storageInventoryData;
-    //            Utilities.SaveSerializedObject(GetStorageInventoryDataFileName(playerCount), storageInventoryData);
-    //        }
-    //        if(playerPositionOnGrid != null)
-    //        {
-    //            Debug.Log("Save position: " + playerPositionOnGrid.playerPosition);
-    //            GameDataManager.playerPositionOnGrid = playerPositionOnGrid;
-    //            Utilities.SaveSerializedObject(GetPlayerPositionOnGridFileName(playerCount), playerPositionOnGrid);
-    //        }
-    //        if(currentSceneName != null && currentSceneName != "")
-    //        {
-    //            GameDataManager.currentSceneName = currentSceneName;
-    //            Utilities.SaveSerializedObject(GetCurrentSceneFileName(playerCount), currentSceneName);
-    //        }
-    //    }
-
-    //    private static string GetCurrentSceneFileName(int playerCount)
-    //    {
-    //        return "currentScene-playmode" + playerCount + ".txt";
-    //    }
-
-    //    static bool LoadMapManagerData()
-    //    {
-    //        bool loadSuccess = true;
-    //        int playerCount = PlayerPrefs.GetInt("PlayerCount", 1);
-    //        inventoryData = null;
-    //        playerPositionOnGrid = null;
-
-    //        if (Utilities.TryLoadSerializedObject(GetInventoryDataFileName(playerCount), out var outInventoryData))
-    //        {
-    //            inventoryData = outInventoryData as InventoryData;
-    //        } else
-    //        {
-    //            loadSuccess = false;
-    //        }
-    //        if (Utilities.TryLoadSerializedObject(GetPlayerPositionOnGridFileName(playerCount), out var outPlayerPositionOnGrid))
-    //        {
-    //            playerPositionOnGrid = outPlayerPositionOnGrid as PlayerPositionOnGrid;
-    //        } else
-    //        {
-    //            loadSuccess = false;
-    //        }
-    //        if (Utilities.TryLoadSerializedObject(GetStorageInventoryDataFileName(playerCount), out var outStorageInventoryData))
-    //        {
-    //            storageInventoryData = outStorageInventoryData as InventoryData;
-    //        } else
-    //        {
-    //            loadSuccess = false;
-    //        }
-    //        if (Utilities.TryLoadSerializedObject(GetCurrentSceneFileName(playerCount), out var outCurrentSceneName))
-    //        {
-    //            currentSceneName = outCurrentSceneName as string;
-    //        } else
-    //        {
-    //            loadSuccess = false;
-    //        }
-    //        return loadSuccess;
-    //    }
-
-    //    static bool LoadPlayerData()
-    //    {
-    //        int playerCount = PlayerPrefs.GetInt("PlayerCount", 1);
-    //        PlayersGamePlayData = new List<PlayerGamePlayData>(playerCount); // Ensure type is List<PlayerGamePlayData>
-
-    //        bool loadPlayerDataSuccess = true;
-
-    //        for (int i = 0; i < playerCount; i++)
-    //        {
-    //            if (Utilities.TryLoadSerializedObject(GetPlayerDataFileName(i, playerCount), out object obj))
-    //            {
-    //                if (obj is PlayerGamePlayData playerData)
-    //                {
-    //                    PlayersGamePlayData.Add(playerData);
-    //                }
-    //                else
-    //                {
-    //                    PlayersGamePlayData.Add(new PlayerGamePlayData());
-    //                    loadPlayerDataSuccess = false;
-    //                }
-    //            }
-    //            else
-    //            {
-    //                PlayersGamePlayData.Add(new PlayerGamePlayData());
-    //                loadPlayerDataSuccess = false;
-    //            }
-    //            Debug.Log("i: " + i + " PlayerCount: " + playerCount + " PlayerData: " + PlayersGamePlayData.Count);
-    //        }
-
-    //        Debug.Log("Count: " + PlayersGamePlayData.Count + " PlayerCount: " + playerCount);
-
-
-
-
-
-    //        Debug.Log("<color=green>[PlayerData] Loaded.</color>");
-    //        return loadPlayerDataSuccess;
-    //    }
-
-
+    static public void ResetData()
+    {
+        gameData = new();
+        SaveData();
+    }
 
     static void SaveData()
     {
-        Utilities.SaveSerializedObject("gamedata.txt", gameData);
+        Utilities.SaveSerializedObject(GameDataPath, gameData);
         Debug.Log("<color=magenta>[GameData] Saved.</color>");
     }
 
-    //    public static void AddPurchasedCharacter(int itemIndex)
-    //    {
-    //        itemsShopData.purchasedItemsIndexes.Add(itemIndex);
-    //        SaveItemsShopData();
-    //    }
+    public static void AddPurchasedCharacter(int itemIndex)
+    {
+        gameData.shopData.purchasedItemsIndexes.Add(itemIndex);
+        SaveData();
+    }
 
-    //    public static List<int> GetAllPurchasedItem()
-    //    {
-    //        return itemsShopData.purchasedItemsIndexes;
-    //    }
+    public static List<int> GetAllPurchasedItem()
+    {
+        return gameData.shopData.purchasedItemsIndexes;
+    }
 
-    //    public static int GetPurchasedItem(int index)
-    //    {
-    //        return itemsShopData.purchasedItemsIndexes[index];
-    //    }
+    public static int GetPurchasedItem(int index)
+    {
+        return gameData.shopData.purchasedItemsIndexes[index];
+    }
 
     //    static bool LoadItemsShopData()
     //    {
@@ -375,9 +173,19 @@ public static class GameDataManager
         GameData gameData = SteganographyScreenshot.LoadData();
         if (gameData == null)
         {
+            gameData= new GameData();
             return false;
         }
 
         return true;
+    }
+
+    public static bool LoadData()
+    {
+        if(Utilities.TryLoadSerializedObject(GameDataPath,out object result)){
+            gameData = result as GameData;
+            return true;
+        }
+        return false;
     }
 }
