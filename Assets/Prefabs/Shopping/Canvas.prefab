@@ -6577,7 +6577,7 @@ MonoBehaviour:
   disableCoinViews: []
   shoppingItemDB: {fileID: 11400000, guid: 8a05727cc436d4c4f83a4863338f209d, type: 2}
   shopUI: {fileID: 3223066255240432474}
-  closeShopButton: {fileID: 5178815596632611307}
+  closeShopButton: {fileID: 5074053778184035269}
   scrollUpButton: {fileID: 0}
   mainMenuCharacterImage: {fileID: 0}
   mainMenuCharacterName: {fileID: 0}

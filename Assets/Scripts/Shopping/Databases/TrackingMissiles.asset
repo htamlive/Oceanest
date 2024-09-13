@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec454647c168c1548b4dd1dbd57a95de, type: 3}
+  m_Name: TrackingMissiles
+  m_EditorClassIdentifier: 
+  image: {fileID: 6560372312808483455, guid: 95650223949de3f4b9e2f0eac99d4412, type: 3}
+  itemName: Tracking Missiles
+  description: Let's make aiming easier
+  price: 15
+  isPurchased: 0
