@@ -71,6 +71,15 @@ public class ShopUI : MonoBehaviour
         //AutoScrollShopList(GameDataManager.GetSelectedCharacterIndex());
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            bool isActive = shopUI.activeInHierarchy;
+            shopUI.SetActive(!isActive);
+        }
+    }
+
 
     void GenerateShopItemsUI()
     {
