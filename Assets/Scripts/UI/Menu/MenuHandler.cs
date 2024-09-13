@@ -17,26 +17,13 @@ public class MenuHandler : MonoBehaviour {
 	[SerializeField] private string playScreen;
 
     public GameObject continueButton;
-    public GameObject playmodePanel;
 
-    public GameObject OptionPanelMobile;
-    public GameObject OptionPanelPC;
 
 
     private void Start()
     {
-        SetOnePlayer();
-
-        playmodePanel.SetActive(!CheckPlatform(RuntimePlatform.Android));
-        OptionPanelMobile.SetActive(CheckPlatform(RuntimePlatform.Android) || CheckPlatform(RuntimePlatform.WebGLPlayer));
-        OptionPanelPC.SetActive(!CheckPlatform(RuntimePlatform.Android) && !CheckPlatform(RuntimePlatform.WebGLPlayer));
-
     }
 
-    private bool CheckPlatform(RuntimePlatform platform)
-    {
-        return Application.platform == platform;
-    }
 
 
     public void QuitGame()
@@ -62,33 +49,24 @@ public class MenuHandler : MonoBehaviour {
 
     public void LoadGame()
     {
-        //if (GameDataManager.LoadStenoData())
-        //{
+        if (GameDataManager.LoadStenoData())
+        {
 
-        //    LoadScene();
-        //}
+            LoadScene();
+        }
     }
 
     private void UpdateGameMode(int playerCount)
     {
-        PlayerPrefs.SetInt("PlayerCount", playerCount);
-        
-        //if (continueButton)
-        //{
-        //    continueButton.SetActive(GameDataManager.ReloadData());
-        //}
+
+        if (continueButton)
+        {
+            //continueButton.SetActive(GameDataManager.ReloadData());
+        }
     }
 
-    public void SetTwoPlayer()
-    {
-        Debug.Log("SetTwoPlayer");
-        UpdateGameMode(2);
-    }
 
-    public void SetOnePlayer()
-    {
-        UpdateGameMode(1);
-    }
+
 
     public void TestLoadFromImage()
     {
