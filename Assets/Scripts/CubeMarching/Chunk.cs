@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -47,10 +48,14 @@ public class Chunk : MonoBehaviour {
 
         mesh = meshFilter.sharedMesh;
         if (mesh == null) {
-            mesh = new Mesh ();
-            mesh.indexFormat = UnityEngine.Rendering.IndexFormat.UInt32;
+            mesh = new()
+            {
+                indexFormat = UnityEngine.Rendering.IndexFormat.UInt32
+            };
             meshFilter.sharedMesh = mesh;
         }
+
+        
 
         if (generateCollider) {
             if (meshCollider.sharedMesh == null) {
@@ -63,4 +68,5 @@ public class Chunk : MonoBehaviour {
 
         meshRenderer.material = mat;
     }
+
 }

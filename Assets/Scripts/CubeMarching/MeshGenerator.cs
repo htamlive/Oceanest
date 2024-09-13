@@ -149,7 +149,7 @@ public class MeshGenerator : MonoBehaviour {
                     // Chunk is within view distance and should be created (if it doesn't already exist)
                     if (sqrDst <= sqrViewDistance) {
 
-                        Bounds bounds = new Bounds (CentreFromCoord (coord), Vector3.one * boundsSize);
+                        Bounds bounds = new (CentreFromCoord (coord), Vector3.one * boundsSize);
                         if (IsVisibleFrom (bounds, Camera.main)) {
                             if (recycleableChunks.Count > 0) {
                                 Chunk chunk = recycleableChunks.Dequeue ();
