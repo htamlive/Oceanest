@@ -30,6 +30,9 @@ public class Submarine : MonoBehaviour {
     public float maxSpinSpeed = 50;
     public Transform spinFan;
 
+    [Header("Missile")]
+    public GameObject missilePrefab;
+
     void Start () {
         currentSpeed = maxSpeed;
     }
@@ -41,6 +44,11 @@ public class Submarine : MonoBehaviour {
         }
         if (Input.GetKey (KeyCode.E)) {
             accelDir += 1;
+        }
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            Instantiate(missilePrefab, transform.position + transform.forward * 20 - transform.up * 10, Quaternion.identity);
         }
 
         #region Movement
@@ -78,7 +86,7 @@ public class Submarine : MonoBehaviour {
         }
         float targetRollVelocity = (targetRollAngle - currentRollAngle) * maxTurnSpeed;
         float rollVelocity = Mathf.Lerp(0, targetRollVelocity, Time.deltaTime * smoothTurnSpeed);
-        transform.localEulerAngles += Vector3.forward * rollVelocity * Time.deltaTime;
+        transform.localEulerAngles += transform.forward * rollVelocity * Time.deltaTime;
         #endregion
 
 
@@ -89,7 +97,7 @@ public class Submarine : MonoBehaviour {
         //propSpinMat.color = new Color (propSpinMat.color.r, propSpinMat.color.g, propSpinMat.color.b, speedPercent * .3f);
 
         #region Spin Fan
-        spinFan.Rotate(Vector3.right, speedPercent * maxSpinSpeed);
+        spinFan.Rotate(Vector3.forward, speedPercent * maxSpinSpeed);
         #endregion
     }
 }
