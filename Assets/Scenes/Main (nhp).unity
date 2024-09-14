@@ -244,18 +244,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1785678350640272293, guid: 87ec13e15b304b346b23eb7a02bef16d, type: 3}
-      propertyPath: maxSpinSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1785678350640272293, guid: 87ec13e15b304b346b23eb7a02bef16d, type: 3}
-      propertyPath: speedMaxLevel
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1785678350640272293, guid: 87ec13e15b304b346b23eb7a02bef16d, type: 3}
-      propertyPath: initialSpeedLevel
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3852592590320761973, guid: 87ec13e15b304b346b23eb7a02bef16d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13
@@ -1670,6 +1658,8 @@ MonoBehaviour:
   depthLayers:
     serializedVersion: 2
     m_Bits: 47
+  paddingX: 0
+  paddingY: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
