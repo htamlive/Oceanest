@@ -10,7 +10,7 @@ public class SubmarineStat : MonoBehaviour
     public RecoveryCounter recoveryCounter;
     private int health;
     private int maxHealth;
-    private bool dead;
+    public bool dead;
 
     // Start is called before the first frame update
     void Start()
