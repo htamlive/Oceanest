@@ -18,6 +18,7 @@ public class PlayerData
 {
     public int coins = 0;
     public int health = 100;
+    public int maxHealth = 100;
     public bool hasDoubleMissiles = false;
     public bool hasTrackingMissiles = false;
     public float[] position = { 0, 0, 0 };
@@ -92,6 +93,11 @@ public static class GameDataManager
     public static int GetHealth()
     {
         return gameData.playerData.health;
+    }
+
+    public static PlayerData GetPlayerData()
+    {
+        return gameData.playerData;
     }
 
     public static bool DoubleMissilesStatus
