@@ -14,13 +14,13 @@ public class SubmarineStat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         var playerData = GameDataManager.GetPlayerData();
         health = playerData.health;
         maxHealth = playerData.maxHealth;
         var position = playerData.position;
         var rotation = playerData.rotation;
         transform.SetPositionAndRotation(new Vector3(position[0], position[1], position[2]), new Quaternion(rotation[0], rotation[1], rotation[2], rotation[3]));
-
     }
 
     // Update is called once per frame
@@ -32,6 +32,17 @@ public class SubmarineStat : MonoBehaviour
             StartCoroutine(Die());
         }
 #endif
+
+#if UNITY_EDITOR
+        if (Input.GetKey(KeyCode.B))
+        {
+            Damage(5);
+        }
+#endif
+
+
+
+
     }
 
     public void Damage(int damageAmount, int direction = 1)

@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
     public GameObject winScreen;
     public HUD hud;
+
+    public List<SubmarineStat> submarineStats;
+
     public static GameManager Instance
     {
         get
@@ -27,6 +30,8 @@ public class GameManager : MonoBehaviour
         
     }
 
+
+
     // Update is called once per frame
     void Update()
     {
@@ -39,6 +44,12 @@ public class GameManager : MonoBehaviour
             Debug.Log("camera: " + camera);
             StartCoroutine(SteganographyScreenshot.CaptureAndEmbedData(camera));
         }
+#if UNITY_EDITOR
+        if (Input.GetKey(KeyCode.V))
+        {
+            WinGame();
+        }
+#endif
     }
 
     internal void WinGame()
@@ -50,6 +61,22 @@ public class GameManager : MonoBehaviour
     internal void ResetGamePlay()
     {
         StartCoroutine(DelayResetGamePlay());
+    }
+
+    public void SavePlayerData()
+    {
+        var playerData = GameDataManager.GetPlayerData();
+        foreach (var item in submarineStats)
+        {
+            var gameObject = item.gameObject;
+
+            if (gameObject != null)
+            {
+                GameDataManager.UpdatePlayerTransformAndSave(gameObject.transform); 
+            }
+        }
+
+        
     }
 
     private IEnumerator DelayResetGamePlay()

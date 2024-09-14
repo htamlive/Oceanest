@@ -100,6 +100,22 @@ public static class GameDataManager
         return gameData.playerData;
     }
 
+    public static void UpdatePlayerTransformAndSave(Transform transform)
+    {
+        var position = transform.position;
+        gameData.playerData.position[0] = position.x;
+        gameData.playerData.position[1] = position.y;
+        gameData.playerData.position[2] = position.z;
+
+        var rotation = transform.rotation;
+        gameData.playerData.rotation[0] = rotation.x;
+        gameData.playerData.rotation[1] = rotation.y;
+        gameData.playerData.rotation[2] = rotation.z;
+        gameData.playerData.rotation[3] = rotation.w;
+
+        SaveData();
+    }
+
     public static bool DoubleMissilesStatus
     {
         set { gameData.playerData.hasDoubleMissiles = value; SaveData(); }
@@ -118,8 +134,9 @@ public static class GameDataManager
         SaveData();
     }
 
-    static void SaveData()
+    static public void SaveData()
     {
+
         Utilities.SaveSerializedObject(GameDataPath, gameData);
         Debug.Log("<color=magenta>[GameData] Saved.</color>");
     }
