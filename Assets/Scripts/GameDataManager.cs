@@ -21,7 +21,7 @@ public class PlayerData
     public int maxHealth = 100;
     public bool hasDoubleMissiles = false;
     public bool hasTrackingMissiles = false;
-    public float[] position = { 0, 0, 0 };
+    public float[] position = { -7, 65, -112 };
     public float[] rotation = { 0, 0, 0, 0 };
 }
 

@@ -40,7 +40,7 @@ public class CameraUnderwaterEffect : MonoBehaviour
         colourTexture = RenderTexture.GetTemporary(cam.pixelWidth + paddingX, cam.pixelHeight + paddingY, 0, RenderTextureFormat.Default);
 
         //Create depthCam and parent it to main camera
-        GameObject go = new GameObject("Depth Cam");
+        GameObject go = new("Depth Cam");
         depthCam = go.AddComponent<Camera>();
         go.transform.SetParent(transform);
         go.transform.position = transform.position;
@@ -70,6 +70,8 @@ public class CameraUnderwaterEffect : MonoBehaviour
         //get the camera frustum of the near plane.
         Vector3[] corners = new Vector3[4];
 
+        //depthCam.transform.rotation = transform.rotation;
+
         cam.CalculateFrustumCorners(new Rect(0, 0, 1, 1), cam.nearClipPlane, cam.stereoActiveEye, corners);
 
         //check where the water level is, without factoring in rolling (as we cannot)
@@ -95,6 +97,7 @@ public class CameraUnderwaterEffect : MonoBehaviour
                     //get the interpolation value (delta) of the point the linecast hit
                     //the reverse of a lerp function gives us the delta.
                     float delta = hit.distance / (end - start).magnitude;
+
 
                     //set the water level
                     //use 1 - delta to get the reverse of the number
