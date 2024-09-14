@@ -9,14 +9,30 @@ public class WormManager : MonoBehaviour
     [SerializeField] private float radius = 2f;
     [SerializeField] private float attackDuration = 7f;
     [SerializeField] private float attackDelayTime = 10f;
-
-
+    [SerializeField] private float maxHealth = 100f;
 
     private Animator animator;
     private Vector3 basePos;
     private bool foundNewPos = false;
     private const float attackLength = 85f;
     private float attackTime = 0;
+    private float currentHealth;
+
+
+    public float GetHealthPercent()
+    {
+        return currentHealth / maxHealth * 100f;
+    }
+
+    public void OnReceiveDamage(float damage)
+    {
+        currentHealth -= damage;
+        if (currentHealth <= 0)
+        {
+            currentHealth = 0;
+            OnDeath();
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +40,7 @@ public class WormManager : MonoBehaviour
         animator = wormboss.GetComponent<Animator>();
         animator.SetBool("appear", false);
         basePos = wormboss.GetComponent<Transform>().position;
+        currentHealth = maxHealth;
     }
 
     // Update is called once per frame
@@ -34,6 +51,11 @@ public class WormManager : MonoBehaviour
     private bool IsHidden()
     {
         return animator.GetCurrentAnimatorStateInfo(0).IsName("Hidden");
+    }
+
+    private void OnDeath()
+    {
+        animator.SetBool("Death", true);
     }
 
     private void FixedUpdate()
