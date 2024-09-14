@@ -9,6 +9,7 @@ public class WormManager : MonoBehaviour
     [SerializeField] private float radius = 2f;
     [SerializeField] private float attackDuration = 7f;
     [SerializeField] private float attackDelayTime = 10f;
+    public int attackDamage = 20;
     [SerializeField] private float maxHealth = 100f;
 
     private Animator animator;
@@ -26,7 +27,7 @@ public class WormManager : MonoBehaviour
 
     public void OnReceiveDamage(float damage)
     {
-        Debug.Log("WormBoss: " + currentHealth + " - " + damage);
+        //Debug.Log("WormBoss: " + currentHealth + " - " + damage);
         currentHealth -= damage;
         if (currentHealth <= 0)
         {

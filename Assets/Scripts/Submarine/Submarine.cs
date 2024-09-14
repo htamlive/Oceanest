@@ -32,6 +32,7 @@ public class Submarine : MonoBehaviour {
     float pitchVelocity;
     float currentSpeed;
     Rigidbody body;
+    SubmarineStat subStat;
 
     [Header("Spin Fan")]
     public float maxSpinSpeed = 5;
@@ -50,6 +51,7 @@ public class Submarine : MonoBehaviour {
         currentSpeed = maxSpeed;
         speedLevel = initialSpeedLevel;
         body = GetComponent<Rigidbody>();
+        subStat = GetComponent<SubmarineStat>();
     }
 
     void Update () {
@@ -207,7 +209,13 @@ public class Submarine : MonoBehaviour {
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
         {
-            GameDataManager.AddHealth(-wallCollisionDamage);
+            //GameDataManager.AddHealth(-wallCollisionDamage);
+            subStat.Damage(wallCollisionDamage);
+        }
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("Boss"))
+        {
+            //GameDataManager.AddHealth(-collision.gameObject.GetComponentInParent<WormManager>().attackDamage);
+            subStat.Damage(collision.gameObject.GetComponentInParent<WormManager>().attackDamage);
         }
     }
 
