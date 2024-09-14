@@ -47,15 +47,24 @@ public class WormManager : MonoBehaviour
                 // FRONT ATTACK: rate < 0.5
                 if (Random.Range(0f, 1f) < 0.5f)
                 {
+                    float ang;
                     dx = submarineVelocity.x;
                     dz = submarineVelocity.z;
                     len = Mathf.Sqrt(dx * dx + dz * dz);
                     dx /= len;
                     dz /= len;
-                    float ang = Mathf.Acos(dz);
-                    if (Mathf.Abs(Mathf.Sin(ang) - dx) > 0.0001)
+
+                    if (Mathf.Abs(dx) < 0.001 && Mathf.Abs(dz) < 0.001)
                     {
-                        ang = -ang;
+                        ang = Random.Range(0f, 2f);
+                    }
+                    else
+                    {
+                        ang = Mathf.Acos(dz);
+                        if (Mathf.Abs(Mathf.Sin(ang) - dx) > 0.0001)
+                        {
+                            ang = -ang;
+                        }
                     }
 
                     float distance = attackLength - Random.Range(0, 10);
