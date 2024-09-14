@@ -18,6 +18,9 @@ public class CameraUnderwaterEffect : MonoBehaviour
     Material material;
     bool inWater;
 
+    public int paddingX = 0;
+    public int paddingY = 0;
+
 
     // Start is called before the first frame update
     void Start()
@@ -33,8 +36,8 @@ public class CameraUnderwaterEffect : MonoBehaviour
 
         //Create render textures for the camera to save the colour and depth information
         //prevent the camera from rendering onto the game scene
-        depthTexture = RenderTexture.GetTemporary(cam.pixelWidth, cam.pixelHeight, 16, RenderTextureFormat.Depth);
-        colourTexture = RenderTexture.GetTemporary(cam.pixelWidth, cam.pixelHeight, 0, RenderTextureFormat.Default);
+        depthTexture = RenderTexture.GetTemporary(cam.pixelWidth + paddingX, cam.pixelHeight + paddingY, 16, RenderTextureFormat.Depth);
+        colourTexture = RenderTexture.GetTemporary(cam.pixelWidth + paddingX, cam.pixelHeight + paddingY, 0, RenderTextureFormat.Default);
 
         //Create depthCam and parent it to main camera
         GameObject go = new GameObject("Depth Cam");
