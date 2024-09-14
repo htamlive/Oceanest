@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
-
+    public GameObject winScreen;
     public static GameManager Instance
     {
         get
@@ -36,5 +36,11 @@ public class GameManager : MonoBehaviour
             Debug.Log("camera: " + camera);
             StartCoroutine(SteganographyScreenshot.CaptureAndEmbedData(camera));
         }
+    }
+
+    internal void WinGame()
+    {
+
+        winScreen.SetActive(true);
     }
 }
