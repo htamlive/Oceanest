@@ -211,4 +211,9 @@ public static class GameDataManager
         }
         return false;
     }
+
+    internal static void ResetHealth()
+    {
+        gameData.playerData.health = gameData.playerData.maxHealth;
+    }
 }

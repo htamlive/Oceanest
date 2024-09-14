@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.WSA;
 
+[RequireComponent(typeof(RecoveryCounter))]
 public class SubmarineStat : MonoBehaviour
 {
     public bool HasTakenDamage { get; private set; }
-    RecoveryCounter recoveryCounter;
+    public RecoveryCounter recoveryCounter;
     private int health;
     private int maxHealth;
     private bool dead;
@@ -36,7 +37,7 @@ public class SubmarineStat : MonoBehaviour
 #if UNITY_EDITOR
         if (Input.GetKey(KeyCode.B))
         {
-            Damage(5);
+            Damage(50);
         }
 #endif
 
@@ -58,7 +59,7 @@ public class SubmarineStat : MonoBehaviour
             health = GameDataManager.GetHealth();
             if (health <= 0)
             {
-                gameObject.layer = LayerMask.NameToLayer("IgnorePlayer");
+                //gameObject.layer = LayerMask.NameToLayer("IgnorePlayer");
                 StartCoroutine(Die());
             }
             GameManager.Instance.hud.HealthBarHurt();
