@@ -397,8 +397,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1690c0ea8f9e4b642b163514608de285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMaxLevel: 5
-  initialSpeedLevel: 3
+  speedMaxLevel: 3
+  initialSpeedLevel: 0
   maxSpeed: 100
   acceleration: 20
   smoothSpeed: 3
@@ -407,9 +407,13 @@ MonoBehaviour:
   maxRollSpeed: 100
   maxTurnSpeed: 50
   smoothTurnSpeed: 3
-  maxSpinSpeed: 15
+  maxSpinSpeed: 5
   spinFan: {fileID: 5362119864029279558}
   missilePrefab: {fileID: 6218341245850011874, guid: e055e3ec9d798da48aff123819c1a3b5, type: 3}
+  skills:
+    canEmittMissile: 1
+    trackingMissile: 0
+    doubleMissile: 0
 --- !u!136 &5221177774658929275
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -473,6 +477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recoveryCounter: {fileID: 7005940672827409356}
+  dead: 0
 --- !u!114 &7005940672827409356
 MonoBehaviour:
   m_ObjectHideFlags: 0

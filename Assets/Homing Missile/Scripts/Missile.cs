@@ -6,7 +6,7 @@ namespace Tarodev {
     public class Missile : MonoBehaviour {
         [Header("REFERENCES")] 
         [SerializeField] private Rigidbody _rb;
-        [SerializeField] private Target _target;
+        public Target _target;
         [SerializeField] private GameObject _explosionPrefab;
 
         [Header("MOVEMENT")] 
@@ -23,16 +23,32 @@ namespace Tarodev {
         [SerializeField] private float _deviationAmount = 50;
         [SerializeField] private float _deviationSpeed = 2;
 
+        private Vector3 initForward;
+
+        private void Start()
+        {
+            if (!_rb) _rb = GetComponent<Rigidbody>();
+            initForward = transform.forward;
+        }
+
         private void FixedUpdate() {
-            _rb.velocity = transform.forward * _speed;
 
-            var leadTimePercentage = Mathf.InverseLerp(_minDistancePredict, _maxDistancePredict, Vector3.Distance(transform.position, _target.transform.position));
+            if (!_target)
+            {
+                _rb.velocity = initForward * _speed;
 
-            PredictMovement(leadTimePercentage);
+            }
+            else
+            {
+                _rb.velocity = transform.forward * _speed;
+                var leadTimePercentage = Mathf.InverseLerp(_minDistancePredict, _maxDistancePredict, Vector3.Distance(transform.position, _target.transform.position));
 
-            AddDeviation(leadTimePercentage);
+                PredictMovement(leadTimePercentage);
 
-            RotateRocket();
+                AddDeviation(leadTimePercentage);
+
+                RotateRocket();
+            }
         }
 
         private void PredictMovement(float leadTimePercentage) {
@@ -57,6 +73,10 @@ namespace Tarodev {
         }
 
         private void OnCollisionEnter(Collision collision) {
+            if (collision.transform.TryGetComponent<Submarine>(out var sub))
+            {
+                return;
+            }
             if(_explosionPrefab) Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
             if (collision.transform.TryGetComponent<IExplode>(out var ex)) ex.Explode();
    

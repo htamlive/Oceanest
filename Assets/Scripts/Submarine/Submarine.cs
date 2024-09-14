@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Tarodev;
 using UnityEngine;
 
 public class Submarine : MonoBehaviour {
 
     [Header("Movement")]
-    public float speedMaxLevel = 5;
-    public float initialSpeedLevel = 3;
+    public float speedMaxLevel = 3;
+    public float initialSpeedLevel = 0;
     public float maxSpeed = 50;
     public float acceleration = 10;
     public float smoothSpeed = 3;
@@ -33,11 +34,14 @@ public class Submarine : MonoBehaviour {
     Rigidbody body;
 
     [Header("Spin Fan")]
-    public float maxSpinSpeed = 50;
+    public float maxSpinSpeed = 5;
     public Transform spinFan;
 
     [Header("Missile")]
     public GameObject missilePrefab;
+
+    [Header("Skill Lock")]
+    public SubmarineSkillLock skills;
 
     void Start () {
         currentSpeed = maxSpeed;
@@ -53,11 +57,11 @@ public class Submarine : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.E)) {
             speedLevel += 1;
         }
-        speedLevel = Mathf.Clamp(speedLevel, 0, speedMaxLevel);
+        speedLevel = Mathf.Clamp(speedLevel, -speedMaxLevel, speedMaxLevel);
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(missilePrefab, transform.position + transform.forward * 20 - transform.up * 10, Quaternion.identity);
+            EmittMissile();
         }
 
         #region Turning
@@ -165,5 +169,34 @@ public class Submarine : MonoBehaviour {
     private void SpinFan()
     {
         spinFan.Rotate(Vector3.forward, speedLevel * maxSpinSpeed / speedMaxLevel);
+    }
+
+    private void EmittMissile()
+    {
+        if (!skills.canEmittMissile) return;
+
+        if (skills.doubleMissile)
+        {
+            GameObject missileObject_1 = Instantiate(missilePrefab, transform.position + transform.forward * 6f - transform.up * 3f - transform.right * 2, Quaternion.Euler(transform.localEulerAngles));
+            GameObject missileObject_2 = Instantiate(missilePrefab, transform.position + transform.forward * 6f - transform.up * 3f + transform.right * 2, Quaternion.Euler(transform.localEulerAngles));
+            Missile missile_1 = missileObject_1.GetComponent<Missile>();
+            Missile missile_2 = missileObject_2.GetComponent<Missile>();
+
+            if (skills.trackingMissile)
+            {
+                missile_1._target = GameObject.FindFirstObjectByType<Target>();
+                missile_2._target = GameObject.FindFirstObjectByType<Target>();
+            }
+        }
+        else
+        {
+            GameObject missileObject = Instantiate(missilePrefab, transform.position + transform.forward * 6f - transform.up * 2f, Quaternion.Euler(transform.localEulerAngles));
+            Missile missile = missileObject.GetComponent<Missile>();
+
+            if (skills.trackingMissile)
+            {
+                missile._target = GameObject.FindFirstObjectByType<Target>();
+            }
+        }
     }
 }
