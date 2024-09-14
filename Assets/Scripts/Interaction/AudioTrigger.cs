@@ -86,7 +86,7 @@ public class AudioTrigger : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D col)
     {
-        if (col == submarineStat)
+        if (col.gameObject == submarineStat.gameObject)
         {
             triggered = false;
         }
