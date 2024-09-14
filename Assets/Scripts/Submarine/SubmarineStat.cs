@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.WSA;
 
 [RequireComponent(typeof(RecoveryCounter))]
 public class SubmarineStat : MonoBehaviour
