@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
     public GameObject winScreen;
     public HUD hud;
+    public GameObject WiningPoint;
 
     public List<SubmarineStat> submarineStats;
 
@@ -30,7 +31,10 @@ public class GameManager : MonoBehaviour
         
     }
 
-
+    public void releaseWiningPoint()
+    {
+        WiningPoint.SetActive(true);
+    }
 
     // Update is called once per frame
     void Update()
@@ -47,7 +51,8 @@ public class GameManager : MonoBehaviour
 #if UNITY_EDITOR
         if (Input.GetKey(KeyCode.V))
         {
-            WinGame();
+            releaseWiningPoint();
+            //WinGame();
         }
 #endif
     }
@@ -86,5 +91,14 @@ public class GameManager : MonoBehaviour
         Instance.hud.animator.SetTrigger("coverScreen");
         Instance.hud.loadSceneName = SceneManager.GetActiveScene().name;
         Time.timeScale = 1f;
+    }
+
+    internal bool CheckIsPlayer(GameObject gameObject)
+    {
+        if(submarineStats == null || submarineStats.Count == 0 || submarineStats[0] == null)
+        {
+            return false;
+        }
+        return gameObject == submarineStats[0].gameObject;
     }
 }
