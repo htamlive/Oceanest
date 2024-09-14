@@ -245,6 +245,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1785678350640272293, guid: 87ec13e15b304b346b23eb7a02bef16d, type: 3}
+      propertyPath: maxSpinSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1785678350640272293, guid: 87ec13e15b304b346b23eb7a02bef16d, type: 3}
       propertyPath: speedMaxLevel
       value: 3
       objectReference: {fileID: 0}
