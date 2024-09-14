@@ -26,6 +26,7 @@ public class WormManager : MonoBehaviour
 
     public void OnReceiveDamage(float damage)
     {
+        Debug.Log("WormBoss: " + currentHealth + " - " + damage);
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
@@ -55,7 +56,7 @@ public class WormManager : MonoBehaviour
 
     private void OnDeath()
     {
-        animator.SetBool("Death", true);
+        animator.SetBool("death", true);
     }
 
     private void FixedUpdate()

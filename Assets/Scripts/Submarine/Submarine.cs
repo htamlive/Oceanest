@@ -152,7 +152,7 @@ public class Submarine : MonoBehaviour {
         float targetYawVelocity = Input.GetAxisRaw("Horizontal") * maxTurnSpeed;
         yawVelocity = Mathf.Lerp(yawVelocity, targetYawVelocity, Time.deltaTime * smoothTurnSpeed);
 
-        transform.localEulerAngles += (Vector3.up * yawVelocity + Vector3.right * pitchVelocity) * Time.deltaTime * Mathf.Max(0.1f, (float)speedLevel / speedMaxLevel);
+        transform.localEulerAngles += (Vector3.up * yawVelocity + Mathf.Sign(speedLevel) * Vector3.right * pitchVelocity) * Time.deltaTime * Mathf.Sign(speedLevel) * Mathf.Max(0.2f, Mathf.Abs(speedLevel) / speedMaxLevel);
     }
 
     private void Balance()

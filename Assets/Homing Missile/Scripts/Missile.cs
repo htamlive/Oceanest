@@ -23,6 +23,9 @@ namespace Tarodev {
         [SerializeField] private float _deviationAmount = 50;
         [SerializeField] private float _deviationSpeed = 2;
 
+        [Header("DAMAGE")]
+        [SerializeField] private int _damage = 100;
+
         private Vector3 initForward;
 
         private void Start()
@@ -77,9 +80,20 @@ namespace Tarodev {
             {
                 return;
             }
-            if(_explosionPrefab) Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
-            if (collision.transform.TryGetComponent<IExplode>(out var ex)) ex.Explode();
-   
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Boss"))
+            {
+                //if (collision.transform.TryGetComponent<WormManager>(out var wm))
+                //{
+                //    wm.OnReceiveDamage(_damage);
+                //}
+                collision.gameObject.GetComponentInParent<WormManager>().OnReceiveDamage(_damage);
+            }
+            else
+            {
+                if (collision.transform.TryGetComponent<IExplode>(out var ex)) ex.Explode();
+            }
+            Debug.Log("Missile hit: " + collision.gameObject.name);
+            if (_explosionPrefab) Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
 
