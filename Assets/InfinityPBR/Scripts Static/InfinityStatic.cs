@@ -6,16 +6,16 @@ using UnityEngine;
 /*
  * These are static methods used in the editor scripts from Infinity PBR
  */
-
+#if UNITY_EDITOR
 namespace InfinityPBR
 {
     [System.Serializable]
     public static class InfinityStatic
     {
-#if UNITY_EDITOR
+
         public static string[] AllPrefabGuids => AssetDatabase.FindAssets("t:Prefab");
         public static string[] AllPrefabPaths => AllPrefabGuids.Select(AssetDatabase.GUIDToAssetPath).ToArray();
-#endif
+
         
         public static Vector3 WorldPositionOf(Transform transform, Vector3 positionOffset) => transform.TransformPoint(positionOffset);
         
@@ -40,8 +40,10 @@ namespace InfinityPBR
             var allLabels = new List<string>();
             foreach (var guid in guids)
             {
+#if UNITY_EDITOR
                 var path = AssetDatabase.GUIDToAssetPath(guid);
                 var labels = AssetDatabase.GetLabels(AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(path));
+#endif
                 allLabels.AddRange(labels);
             }
 
@@ -86,7 +88,7 @@ namespace InfinityPBR
             foreach (var label in selectedLabels)
             {
                 var searchFilter = "l:" + label;
-
+#if UNITY_EDITOR
                 var guids = AssetDatabase.FindAssets(searchFilter);
                 foreach (var guid in guids)
                 {
@@ -102,6 +104,7 @@ namespace InfinityPBR
                         objects.Add(asset);
                     }
                 }
+#endif
             }
 
             // Remove duplicates
@@ -144,15 +147,16 @@ namespace InfinityPBR
             return sortAlpha ? objects.OrderBy(o => o.name).ToArray() : objects.ToArray();
         }
 
-        public static void AddLabel(this UnityEngine.Object obj, string label)
-        {
-            var currentLabels = AssetDatabase.GetLabels(obj);
+        //public static void AddLabel(this UnityEngine.Object obj, string label)
+        //{
+        //    var currentLabels = AssetDatabase.GetLabels(obj);
         
-            if (!currentLabels.Contains(label))
-            {
-                List<string> labelList = new List<string>(currentLabels) { label };
-                AssetDatabase.SetLabels(obj, labelList.ToArray());
-            }
-        }
+        //    if (!currentLabels.Contains(label))
+        //    {
+        //        List<string> labelList = new List<string>(currentLabels) { label };
+        //        AssetDatabase.SetLabels(obj, labelList.ToArray());
+        //    }
+        //}
     }
 }
+#endif
