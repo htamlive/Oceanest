@@ -43,6 +43,9 @@ public class Submarine : MonoBehaviour {
     [Header("Skill Lock")]
     public SubmarineSkillLock skills;
 
+    [Header("Damage")]
+    public int wallCollisionDamage = 5;
+
     void Start () {
         currentSpeed = maxSpeed;
         speedLevel = initialSpeedLevel;
@@ -112,7 +115,7 @@ public class Submarine : MonoBehaviour {
         MoveToward(1f);
         SpinFan();
         //body.velocity = velocity;
-        Debug.Log(speedLevel + " " + speedLevel / speedMaxLevel);
+        //Debug.Log(speedLevel + " " + speedLevel / speedMaxLevel);
     }
 
     private void MoveToward(float lerpAmount)
@@ -163,7 +166,7 @@ public class Submarine : MonoBehaviour {
         float targetRollVelocity = (targetRollAngle - currentRollAngle) * maxRollSpeed;
         float rollVelocity = Mathf.Lerp(0, targetRollVelocity, Time.deltaTime * smoothTurnSpeed);
         transform.localEulerAngles += Vector3.forward * rollVelocity * Time.deltaTime;
-        Debug.Log(transform.localEulerAngles);
+        //Debug.Log(transform.localEulerAngles);
     }
 
     private void SpinFan()
@@ -199,4 +202,13 @@ public class Submarine : MonoBehaviour {
             }
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
+        {
+            GameDataManager.AddHealth(-wallCollisionDamage);
+        }
+    }
+
 }
