@@ -6,7 +6,7 @@ namespace Tarodev {
     public class Missile : MonoBehaviour {
         [Header("REFERENCES")] 
         [SerializeField] private Rigidbody _rb;
-        [SerializeField] private Target _target;
+        public Target _target;
         [SerializeField] private GameObject _explosionPrefab;
 
         [Header("MOVEMENT")] 
@@ -23,16 +23,31 @@ namespace Tarodev {
         [SerializeField] private float _deviationAmount = 50;
         [SerializeField] private float _deviationSpeed = 2;
 
+        private Vector3 initForward;
+
+        private void Start()
+        {
+            if (!_rb) _rb = GetComponent<Rigidbody>();
+            initForward = transform.forward;
+        }
+
         private void FixedUpdate() {
-            _rb.velocity = transform.forward * _speed;
 
-            var leadTimePercentage = Mathf.InverseLerp(_minDistancePredict, _maxDistancePredict, Vector3.Distance(transform.position, _target.transform.position));
+            if (!_target)
+            {
+                _rb.velocity = initForward * _speed;
+            }
+            else
+            {
+                _rb.velocity = transform.forward * _speed;
+                var leadTimePercentage = Mathf.InverseLerp(_minDistancePredict, _maxDistancePredict, Vector3.Distance(transform.position, _target.transform.position));
 
-            PredictMovement(leadTimePercentage);
+                PredictMovement(leadTimePercentage);
 
-            AddDeviation(leadTimePercentage);
+                AddDeviation(leadTimePercentage);
 
-            RotateRocket();
+                RotateRocket();
+            }
         }
 
         private void PredictMovement(float leadTimePercentage) {

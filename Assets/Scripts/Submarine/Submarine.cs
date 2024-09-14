@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Tarodev;
 using UnityEngine;
 
 public class Submarine : MonoBehaviour {
 
     [Header("Movement")]
-    public float speedMaxLevel = 5;
-    public float initialSpeedLevel = 3;
+    public float speedMaxLevel = 3;
+    public float initialSpeedLevel = 0;
     public float maxSpeed = 50;
     public float acceleration = 10;
     public float smoothSpeed = 3;
@@ -39,6 +40,9 @@ public class Submarine : MonoBehaviour {
     [Header("Missile")]
     public GameObject missilePrefab;
 
+    [Header("Skill Lock")]
+    public SubmarineSkillLock skills;
+
     void Start () {
         currentSpeed = maxSpeed;
         speedLevel = initialSpeedLevel;
@@ -53,11 +57,11 @@ public class Submarine : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.E)) {
             speedLevel += 1;
         }
-        speedLevel = Mathf.Clamp(speedLevel, 0, speedMaxLevel);
+        speedLevel = Mathf.Clamp(speedLevel, -speedMaxLevel, speedMaxLevel);
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(missilePrefab, transform.position + transform.forward * 20 - transform.up * 10, Quaternion.identity);
+            EmittMissile();
         }
 
         #region Turning
@@ -165,5 +169,18 @@ public class Submarine : MonoBehaviour {
     private void SpinFan()
     {
         spinFan.Rotate(Vector3.forward, speedLevel * maxSpinSpeed / speedMaxLevel);
+    }
+
+    private void EmittMissile()
+    {
+        if (!skills.canEmittMissile) return;
+
+        GameObject missileObject = Instantiate(missilePrefab, transform.position + transform.forward * 20 - transform.up * 10, Quaternion.Euler(transform.localEulerAngles));
+        Missile missile = missileObject.GetComponent<Missile>();
+
+        if (skills.trackingMissile)
+        {
+            missile._target = GameObject.FindFirstObjectByType<Target>();
+        }
     }
 }
