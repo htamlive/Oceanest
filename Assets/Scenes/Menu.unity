@@ -2391,7 +2391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99e6bba8aebe92249b0ebd1cf45cd894, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playScreen: 
+  playScreen: Main
   continueButton: {fileID: 210787245}
 --- !u!1001 &1344402511
 PrefabInstance:

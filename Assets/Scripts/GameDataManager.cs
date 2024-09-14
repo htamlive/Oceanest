@@ -22,7 +22,7 @@ public class PlayerData
     public bool hasDoubleMissiles = false;
     public bool hasTrackingMissiles = false;
     public float[] position = { 0, 0, 0 };
-    public float[] rotation = { 0, 0, 0 };
+    public float[] rotation = { 0, 0, 0, 0 };
 }
 
 [System.Serializable]

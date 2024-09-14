@@ -1,11 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
     public GameObject winScreen;
+    public HUD hud;
     public static GameManager Instance
     {
         get
@@ -42,5 +45,19 @@ public class GameManager : MonoBehaviour
     {
 
         winScreen.SetActive(true);
+    }
+
+    internal void ResetGamePlay()
+    {
+        StartCoroutine(DelayResetGamePlay());
+    }
+
+    private IEnumerator DelayResetGamePlay()
+    {
+        Time.timeScale = .5f;
+        yield return new WaitForSeconds(0.05f);
+        Instance.hud.animator.SetTrigger("coverScreen");
+        Instance.hud.loadSceneName = SceneManager.GetActiveScene().name;
+        Time.timeScale = 1f;
     }
 }

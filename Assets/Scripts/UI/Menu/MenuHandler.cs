@@ -4,14 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
-[Serializable]
-public enum PlayMode
-{
-    OnePlayer,
-    TwoPlayer
-}
-
 public class MenuHandler : MonoBehaviour {
 
 	[SerializeField] private string playScreen;
