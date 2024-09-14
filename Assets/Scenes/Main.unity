@@ -366,6 +366,75 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66104299666c4ef4697b5fc3d77aa3b9, type: 3}
+--- !u!1001 &1042075202
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 872410467062430395, guid: 6d72ce5fe09053441aab062c87513c39, type: 3}
+      propertyPath: m_Name
+      value: Water Body
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107113257446662155, guid: 6d72ce5fe09053441aab062c87513c39, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 279.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107113257446662155, guid: 6d72ce5fe09053441aab062c87513c39, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 86.75212
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107113257446662155, guid: 6d72ce5fe09053441aab062c87513c39, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 260.46332
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107113257446662155, guid: 6d72ce5fe09053441aab062c87513c39, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107113257446662155, guid: 6d72ce5fe09053441aab062c87513c39, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 445.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107113257446662155, guid: 6d72ce5fe09053441aab062c87513c39, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107113257446662155, guid: 6d72ce5fe09053441aab062c87513c39, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107113257446662155, guid: 6d72ce5fe09053441aab062c87513c39, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107113257446662155, guid: 6d72ce5fe09053441aab062c87513c39, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107113257446662155, guid: 6d72ce5fe09053441aab062c87513c39, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107113257446662155, guid: 6d72ce5fe09053441aab062c87513c39, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107113257446662155, guid: 6d72ce5fe09053441aab062c87513c39, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107113257446662155, guid: 6d72ce5fe09053441aab062c87513c39, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6d72ce5fe09053441aab062c87513c39, type: 3}
 --- !u!1 &1423624802
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,8 +642,8 @@ GameObject:
   - component: {fileID: 2072104909}
   - component: {fileID: 2072104908}
   - component: {fileID: 2072104911}
-  m_Layer: 0
-  m_Name: Plane
+  m_Layer: 10
+  m_Name: Map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -861,7 +930,7 @@ MonoBehaviour:
   shader: {fileID: 4800000, guid: c1ee85665440d8b43b89bcf43040ff43, type: 3}
   depthColor: {r: 0, g: 0.34102517, b: 0.7075472, a: 1}
   depthStart: 100
-  depthEnd: 98
+  depthEnd: 1200
   depthLayers:
     serializedVersion: 2
     m_Bits: 47
@@ -870,6 +939,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1423624804}
+  - {fileID: 1042075202}
   - {fileID: 200924569}
   - {fileID: 1536373205}
   - {fileID: 2093351438}
