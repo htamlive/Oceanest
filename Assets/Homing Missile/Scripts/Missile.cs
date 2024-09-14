@@ -36,6 +36,7 @@ namespace Tarodev {
             if (!_target)
             {
                 _rb.velocity = initForward * _speed;
+
             }
             else
             {
@@ -72,6 +73,10 @@ namespace Tarodev {
         }
 
         private void OnCollisionEnter(Collision collision) {
+            if (collision.transform.TryGetComponent<Submarine>(out var sub))
+            {
+                return;
+            }
             if(_explosionPrefab) Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
             if (collision.transform.TryGetComponent<IExplode>(out var ex)) ex.Explode();
    

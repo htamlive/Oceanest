@@ -34,7 +34,7 @@ public class Submarine : MonoBehaviour {
     Rigidbody body;
 
     [Header("Spin Fan")]
-    public float maxSpinSpeed = 50;
+    public float maxSpinSpeed = 5;
     public Transform spinFan;
 
     [Header("Missile")]
@@ -175,12 +175,28 @@ public class Submarine : MonoBehaviour {
     {
         if (!skills.canEmittMissile) return;
 
-        GameObject missileObject = Instantiate(missilePrefab, transform.position + transform.forward * 20 - transform.up * 10, Quaternion.Euler(transform.localEulerAngles));
-        Missile missile = missileObject.GetComponent<Missile>();
-
-        if (skills.trackingMissile)
+        if (skills.doubleMissile)
         {
-            missile._target = GameObject.FindFirstObjectByType<Target>();
+            GameObject missileObject_1 = Instantiate(missilePrefab, transform.position + transform.forward * 6f - transform.up * 3f - transform.right * 2, Quaternion.Euler(transform.localEulerAngles));
+            GameObject missileObject_2 = Instantiate(missilePrefab, transform.position + transform.forward * 6f - transform.up * 3f + transform.right * 2, Quaternion.Euler(transform.localEulerAngles));
+            Missile missile_1 = missileObject_1.GetComponent<Missile>();
+            Missile missile_2 = missileObject_2.GetComponent<Missile>();
+
+            if (skills.trackingMissile)
+            {
+                missile_1._target = GameObject.FindFirstObjectByType<Target>();
+                missile_2._target = GameObject.FindFirstObjectByType<Target>();
+            }
+        }
+        else
+        {
+            GameObject missileObject = Instantiate(missilePrefab, transform.position + transform.forward * 6f - transform.up * 2f, Quaternion.Euler(transform.localEulerAngles));
+            Missile missile = missileObject.GetComponent<Missile>();
+
+            if (skills.trackingMissile)
+            {
+                missile._target = GameObject.FindFirstObjectByType<Target>();
+            }
         }
     }
 }
