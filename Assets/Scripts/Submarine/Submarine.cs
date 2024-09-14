@@ -64,50 +64,10 @@ public class Submarine : MonoBehaviour {
         }
         speedLevel = Mathf.Clamp(speedLevel, -speedMaxLevel, speedMaxLevel);
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.J))
         {
             EmittMissile();
         }
-
-        #region Turning
-        //float targetSternAngle = Input.GetAxisRaw("Vertical") * (-maxSternAngle);
-        //float currentSternAngle = transform.localEulerAngles.x;
-        //if (currentSternAngle > 180)
-        //{
-        //    currentSternAngle -= 360;
-        //}
-        //float targetPitchVelocity = (targetSternAngle - currentSternAngle) / (2*maxSternAngle) * maxPitchSpeed;
-        //pitchVelocity = Mathf.Lerp(pitchVelocity, targetPitchVelocity, Time.deltaTime * smoothTurnSpeed);
-
-        //float targetYawVelocity = Input.GetAxisRaw ("Horizontal") * maxTurnSpeed;
-        //yawVelocity = Mathf.Lerp (yawVelocity, targetYawVelocity, Time.deltaTime * smoothTurnSpeed);
-
-        //transform.localEulerAngles += (Vector3.up * yawVelocity + Vector3.right * pitchVelocity) * Time.deltaTime * Mathf.Max(0.1f, (float)speedLevel/speedMaxLevel);
-        #endregion
-
-        #region Balancing
-        //float targetRollAngle = 0;
-        //float currentRollAngle = transform.localEulerAngles.z;
-        //if (currentRollAngle > 180)
-        //{
-        //    targetRollAngle = 360;
-        //}
-        //float targetRollVelocity = (targetRollAngle - currentRollAngle) * maxTurnSpeed;
-        //float rollVelocity = Mathf.Lerp(0, targetRollVelocity, Time.deltaTime * smoothTurnSpeed);
-        //transform.localEulerAngles += transform.forward * rollVelocity * Time.deltaTime;
-        //Debug.Log(transform.localEulerAngles);
-        #endregion
-
-
-        //rudderYaw.localEulerAngles = Vector3.up * yawVelocity / maxTurnSpeed * rudderAngle;
-        //rudderPitch.localEulerAngles = Vector3.left * pitchVelocity / maxPitchSpeed * rudderAngle;
-
-        //propeller.Rotate (Vector3.forward * Time.deltaTime * propellerSpeedFac * speedPercent, Space.Self);
-        //propSpinMat.color = new Color (propSpinMat.color.r, propSpinMat.color.g, propSpinMat.color.b, speedPercent * .3f);
-
-        #region Spin Fan
-        //spinFan.Rotate(Vector3.forward, speedPercent * maxSpinSpeed);
-        #endregion
     }
 
     void FixedUpdate()
@@ -116,8 +76,6 @@ public class Submarine : MonoBehaviour {
         Balance();
         MoveToward(1f);
         SpinFan();
-        //body.velocity = velocity;
-        //Debug.Log(speedLevel + " " + speedLevel / speedMaxLevel);
     }
 
     private void MoveToward(float lerpAmount)
@@ -128,16 +86,6 @@ public class Submarine : MonoBehaviour {
         Vector3 veloDiff = targetVeloVec - body.velocity;
         Vector3 movement = veloDiff * acceleration;
         body.AddForce(targetVeloVec * acceleration, ForceMode.Force);
-
-        //currentSpeed += acceleration * Time.deltaTime * speedLevel;
-        //currentSpeed = Mathf.Clamp(currentSpeed, 0, maxSpeed);
-        //float speedPercent = currentSpeed / maxSpeed;
-
-        //Vector3 targetVelocity = transform.forward * currentSpeed;
-        //velocity = Vector3.Lerp(velocity, targetVelocity, Time.deltaTime * smoothSpeed);
-
-        //transform.Translate(transform.forward * currentSpeed * Time.deltaTime, Space.World);
-
     }
 
     private void Turn()
@@ -168,7 +116,6 @@ public class Submarine : MonoBehaviour {
         float targetRollVelocity = (targetRollAngle - currentRollAngle) * maxRollSpeed;
         float rollVelocity = Mathf.Lerp(0, targetRollVelocity, Time.deltaTime * smoothTurnSpeed);
         transform.localEulerAngles += Vector3.forward * rollVelocity * Time.deltaTime;
-        //Debug.Log(transform.localEulerAngles);
     }
 
     private void SpinFan()
@@ -209,12 +156,10 @@ public class Submarine : MonoBehaviour {
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
         {
-            //GameDataManager.AddHealth(-wallCollisionDamage);
             subStat.Damage(wallCollisionDamage);
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("Boss"))
         {
-            //GameDataManager.AddHealth(-collision.gameObject.GetComponentInParent<WormManager>().attackDamage);
             subStat.Damage(collision.gameObject.GetComponentInParent<WormManager>().attackDamage);
         }
     }
