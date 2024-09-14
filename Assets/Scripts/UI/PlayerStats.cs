@@ -45,6 +45,7 @@ public class PlayerStats : Health
             statBars[i].maxValue = maxStats[i];
         }
         statBars[3].maxValue = maxHealth;
+        statBars[3].maxValue = maxHealth;
     }
 
     // Update is called once per frame

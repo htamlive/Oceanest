@@ -81,11 +81,14 @@ public static class SteganographyScreenshot
         byte[] bytes = texture.EncodeToPNG();
         File.WriteAllBytes(filePath, bytes);
     }
-    //public static CompositeGameData ExtractGameDataFromImage(string filePath)
-    //{
-    //    byte[] dataBytes = ExtractDataFromImage(filePath);
-    //    return Utilities.DeserializeObject<CompositeGameData>(dataBytes);
-    //}
+
+    public static T ExtractGameDataFromImage<T>(string filePath)
+    {
+        byte[] dataBytes = ExtractDataFromImage(filePath);
+        return Utilities.DeserializeObject<T>(dataBytes);
+    }
+
+
 
     public static byte[] ExtractDataFromImage(string filePath)
     {
@@ -108,20 +111,17 @@ public static class SteganographyScreenshot
         return dataBytes;
     }
 
-    //internal static CompositeGameData LoadData()
-    //{
-    //    var choosen_paths = StandaloneFileBrowser.OpenFilePanel("Choose Image", "", "png", false);
+    internal static GameData LoadData()
+    {
+        var choosen_paths = StandaloneFileBrowser.OpenFilePanel("Choose Image", "", "png", false);
 
-    //    if (choosen_paths.Length == 0)
-    //    {
-    //        return null;
-    //    }
+        if (choosen_paths.Length == 0)
+        {
+            return null;
+        }
 
-    //    string filePath = choosen_paths[0];
+        string filePath = choosen_paths[0];
 
-
-    //    CompositeGameData gameData = ExtractGameDataFromImage(filePath);
-        
-    //    return gameData;
-    //}
+        return ExtractGameDataFromImage<GameData>(filePath);
+    }
 }

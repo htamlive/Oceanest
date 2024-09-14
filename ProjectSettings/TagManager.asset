@@ -42,6 +42,51 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Layer6
+    uniqueID: 2101095083
+    locked: 0
+  - name: Layer5
+    uniqueID: 3517974901
+    locked: 0
+  - name: Layer4
+    uniqueID: 2209648175
+    locked: 0
+  - name: Layer3
+    uniqueID: 2345912435
+    locked: 0
+  - name: Layer2
+    uniqueID: 1116450879
+    locked: 0
+  - name: Layer1
+    uniqueID: 4183157679
+    locked: 0
+  - name: Player
+    uniqueID: 3572617427
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Interactables
+    uniqueID: 2265956209
+    locked: 0
+  - name: Layer0
+    uniqueID: 4007290781
+    locked: 0
+  - name: Layer-1
+    uniqueID: 231812807
+    locked: 0
+  - name: Layer-2
+    uniqueID: 3235323333
+    locked: 0
+  - name: Layer-3
+    uniqueID: 1450670335
+    locked: 0
+  - name: Layer-4
+    uniqueID: 715992281
+    locked: 0
+  - name: Layer-5
+    uniqueID: 527530495
+    locked: 0
+  - name: Layer-6
+    uniqueID: 480367525
     locked: 0

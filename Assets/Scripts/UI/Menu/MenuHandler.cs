@@ -4,40 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
-[Serializable]
-public enum PlayMode
-{
-    OnePlayer,
-    TwoPlayer
-}
-
 public class MenuHandler : MonoBehaviour {
 
 	[SerializeField] private string playScreen;
 
     public GameObject continueButton;
-    public GameObject playmodePanel;
-
-    public GameObject OptionPanelMobile;
-    public GameObject OptionPanelPC;
-
-
-    private void Start()
-    {
-        SetOnePlayer();
-
-        playmodePanel.SetActive(!CheckPlatform(RuntimePlatform.Android));
-        OptionPanelMobile.SetActive(CheckPlatform(RuntimePlatform.Android) || CheckPlatform(RuntimePlatform.WebGLPlayer));
-        OptionPanelPC.SetActive(!CheckPlatform(RuntimePlatform.Android) && !CheckPlatform(RuntimePlatform.WebGLPlayer));
-
-    }
-
-    private bool CheckPlatform(RuntimePlatform platform)
-    {
-        return Application.platform == platform;
-    }
-
 
     public void QuitGame()
     {
@@ -49,45 +20,30 @@ public class MenuHandler : MonoBehaviour {
         SceneManager.LoadScene(playScreen);
     }
 
+    public void EnterTutorial()
+    {
+        GameDataManager.EnterTutorialMode();
+        SceneManager.LoadScene("Tutorial");
+    }
+
     public void NewGame()
     {
-        //GameDataManager.ResetData();
+        GameDataManager.ResetData();
         LoadScene();
     }
 
     public void ContinueGame()
     {
+        GameDataManager.LoadData();
         LoadScene();
     }
 
     public void LoadGame()
     {
-        //if (GameDataManager.LoadStenoData())
-        //{
-
-        //    LoadScene();
-        //}
-    }
-
-    private void UpdateGameMode(int playerCount)
-    {
-        PlayerPrefs.SetInt("PlayerCount", playerCount);
-        
-        //if (continueButton)
-        //{
-        //    continueButton.SetActive(GameDataManager.ReloadData());
-        //}
-    }
-
-    public void SetTwoPlayer()
-    {
-        Debug.Log("SetTwoPlayer");
-        UpdateGameMode(2);
-    }
-
-    public void SetOnePlayer()
-    {
-        UpdateGameMode(1);
+        if (GameDataManager.LoadStenoData())
+        {
+            LoadScene();
+        }
     }
 
     public void TestLoadFromImage()

@@ -23,30 +23,30 @@ public class GameSharedUI : MonoBehaviour
     void Start()
     {
         UpdateCoinsUIText();
-        //coinEased = GameDataManager.GetCoins();
+        coinEased = GameDataManager.GetCoins();
     }
 
     public void UpdateCoinsUIText()
     {
-        //for (int i = 0; i < coinsUIText.Length; i++)
-        //{
-        //    SetCoinsText(coinsUIText[i], GameDataManager.GetCoins());
-        //}
+        for (int i = 0; i < coinsUIText.Length; i++)
+        {
+            SetCoinsText(coinsUIText[i], GameDataManager.GetCoins());
+        }
     }
 
     private void Update()
     {
-        //coinEased += (GameDataManager.GetCoins() - coinEased) * Time.deltaTime * 5f;
-        //for (int i = 0; i < coinsUIText.Length; i++)
-        //{
-        //    SetCoinsText(coinsUIText[i], GameDataManager.GetCoins());
-        //}
+        coinEased += (GameDataManager.GetCoins() - coinEased) * Time.deltaTime * 5f;
+        for (int i = 0; i < coinsUIText.Length; i++)
+        {
+            SetCoinsText(coinsUIText[i], GameDataManager.GetCoins());
+        }
 
-        //if (coinEased >= GameDataManager.GetCoins())
-        //{
-        //    //animator.SetTrigger("getGem");
-        //    coinEased = GameDataManager.GetCoins() + 1;
-        //}
+        if (coinEased >= GameDataManager.GetCoins())
+        {
+            //animator.SetTrigger("getGem");
+            coinEased = GameDataManager.GetCoins() + 1;
+        }
     }
 
     void SetCoinsText(TMP_Text textMesh, int value)
