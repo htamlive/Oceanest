@@ -24,6 +24,6 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 1536
-  boundsRadius: 1
+  boundsRadius: 2
   avoidCollisionWeight: 20
-  collisionAvoidDst: 5
+  collisionAvoidDst: 2
