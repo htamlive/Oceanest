@@ -33,6 +33,7 @@ public class Submarine : MonoBehaviour {
     float currentSpeed;
     Rigidbody body;
     SubmarineStat subStat;
+    CharacterEffects characterEffects;
 
     [Header("Spin Fan")]
     public float maxSpinSpeed = 5;
@@ -55,6 +56,7 @@ public class Submarine : MonoBehaviour {
         speedLevel = initialSpeedLevel;
         body = GetComponent<Rigidbody>();
         subStat = GetComponent<SubmarineStat>();
+        characterEffects = GetComponent<CharacterEffects>();
     }
 
     void Update () {
@@ -160,6 +162,7 @@ public class Submarine : MonoBehaviour {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
         {
             subStat.Damage(wallCollisionDamage);
+            characterEffects.cameraEffects.Shake(100f, 1f);
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("Boss"))
         {
