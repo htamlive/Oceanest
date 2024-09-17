@@ -8,32 +8,32 @@ public class BoidManager : MonoBehaviour {
 
     public BoidSettings settings;
     public ComputeShader compute;
-    Boid[] boids;
 
-    void Start () {
-        boids = FindObjectsOfType<Boid> ();
-        foreach (Boid b in boids) {
+    public Spawner spawner;
+
+    void Start () { 
+        foreach (Boid b in spawner.boids) {
             b.Initialize (settings, null);
         }
 
     }
 
     void Update () {
-        if (boids != null) {
+        if (spawner.boids != null) {
 
-            int numBoids = boids.Length;
+            int numBoids = spawner.boids.Length;
             var boidData = new BoidData[numBoids];
 
-            for (int i = 0; i < boids.Length; i++) {
-                boidData[i].position = boids[i].position;
-                boidData[i].direction = boids[i].forward;
+            for (int i = 0; i < spawner.spawnCount; i++) {
+                boidData[i].position = spawner.boids[i].position;
+                boidData[i].direction = spawner.boids[i].forward;
             }
 
             var boidBuffer = new ComputeBuffer (numBoids, BoidData.Size);
             boidBuffer.SetData (boidData);
 
             compute.SetBuffer (0, "boids", boidBuffer);
-            compute.SetInt ("numBoids", boids.Length);
+            compute.SetInt ("numBoids", spawner.boids.Length);
             compute.SetFloat ("viewRadius", settings.perceptionRadius);
             compute.SetFloat ("avoidRadius", settings.avoidanceRadius);
 
@@ -42,13 +42,13 @@ public class BoidManager : MonoBehaviour {
 
             boidBuffer.GetData (boidData);
 
-            for (int i = 0; i < boids.Length; i++) {
-                boids[i].avgFlockHeading = boidData[i].flockHeading;
-                boids[i].centreOfFlockmates = boidData[i].flockCentre;
-                boids[i].avgAvoidanceHeading = boidData[i].avoidanceHeading;
-                boids[i].numPerceivedFlockmates = boidData[i].numFlockmates;
+            for (int i = 0; i < spawner.spawnCount; i++) {
+                spawner.boids[i].avgFlockHeading = boidData[i].flockHeading;
+                spawner.boids[i].centreOfFlockmates = boidData[i].flockCentre;
+                spawner.boids[i].avgAvoidanceHeading = boidData[i].avoidanceHeading;
+                spawner.boids[i].numPerceivedFlockmates = boidData[i].numFlockmates;
 
-                boids[i].UpdateBoid ();
+                spawner.boids[i].UpdateBoid ();
             }
 
             boidBuffer.Release ();

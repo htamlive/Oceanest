@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7f31e363b0903d479bbb3e468e009cc, type: 3}
-  m_Name: Settings
+  m_Name: Settings 3
   m_EditorClassIdentifier: 
   minSpeed: 5
   maxSpeed: 8
@@ -24,6 +24,6 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 1536
-  boundsRadius: 2
+  boundsRadius: 0.27
   avoidCollisionWeight: 20
   collisionAvoidDst: 5
