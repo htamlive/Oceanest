@@ -48,6 +48,9 @@ public class Submarine : MonoBehaviour {
     public int wallCollisionDamage = 5;
 
     void Start () {
+        var playerData = GameDataManager.GetPlayerData();
+        skills = playerData.submarineSkillLock;
+
         currentSpeed = maxSpeed;
         speedLevel = initialSpeedLevel;
         body = GetComponent<Rigidbody>();

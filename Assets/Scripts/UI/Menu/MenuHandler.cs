@@ -8,7 +8,17 @@ public class MenuHandler : MonoBehaviour {
 
 	[SerializeField] private string playScreen;
 
-    public GameObject continueButton;
+
+    public List<ButtonWithCircle> buttonWithCircles;
+
+    public void ResetButtonsStatus()
+    {
+        for (int i = 0; i < buttonWithCircles.Count; i++)
+        {
+            buttonWithCircles[i].Deactivate();
+        }
+
+    }
 
     public void QuitGame()
     {

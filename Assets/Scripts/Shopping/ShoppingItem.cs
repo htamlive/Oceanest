@@ -15,7 +15,7 @@ public class ShoppingItem : ScriptableObject
 
     public bool isPurchased;
 
-    public virtual void Purchase()
+    public virtual void Purchase(GameObject player)
     {
         isPurchased = true;
     }

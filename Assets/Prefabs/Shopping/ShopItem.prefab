@@ -661,8 +661,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e66897ab80146c46b5036ca586ac7bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemNotSelectedColor: {r: 0.3647059, g: 0.2509804, b: 0.35686275, a: 0}
-  itemSelectedColor: {r: 0.64705884, g: 0.07058824, b: 0.93333334, a: 0}
+  itemNotSelectedColor: {r: 1, g: 1, b: 1, a: 1}
+  itemSelectedColor: {r: 1, g: 1, b: 1, a: 1}
   shoppingItemImage: {fileID: 6799474902037494038}
   itemNameText: {fileID: 3297368443837345673}
   description: {fileID: 6591431017336788908}
@@ -916,7 +916,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.7095074, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -4.42, y: 47.27}
+  m_AnchoredPosition: {x: -4.4200134, y: 47.27}
   m_SizeDelta: {x: -8.84, y: 41.38}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7261984196863933401
@@ -1242,8 +1242,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: This item can help you do something, just think out what you think
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2e65d96e65046a34b88788cc60e95bdc, type: 2}
+  m_sharedMaterial: {fileID: 1369989910446410821, guid: 2e65d96e65046a34b88788cc60e95bdc, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1467,8 +1467,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 5
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2e65d96e65046a34b88788cc60e95bdc, type: 2}
+  m_sharedMaterial: {fileID: 1369989910446410821, guid: 2e65d96e65046a34b88788cc60e95bdc, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

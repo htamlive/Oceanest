@@ -6,9 +6,9 @@ using UnityEngine;
 [System.Serializable]
 public class DoubleMissiles : ShoppingItem
 {
-    public override void Purchase()
+    public override void Purchase(GameObject player)
     {
         isPurchased = true;
-        GameDataManager.DoubleMissilesStatus = true;
+        GameDataManager.UpdateDoubleMissilesStatus(player, true);
     }
 }

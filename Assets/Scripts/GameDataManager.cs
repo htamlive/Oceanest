@@ -19,8 +19,7 @@ public class PlayerData
     public int coins = 0;
     public int health = 100;
     public int maxHealth = 100;
-    public bool hasDoubleMissiles = false;
-    public bool hasTrackingMissiles = false;
+    public SubmarineSkillLock submarineSkillLock = new();
     public float[] position = { -7, 65, -112 };
     public float[] rotation = { 0, 0, 0, 0 };
 }
@@ -116,17 +115,42 @@ public static class GameDataManager
         SaveData();
     }
 
-    public static bool DoubleMissilesStatus
+    public static bool UpdateDoubleMissilesStatus(GameObject playerObj, bool status)
     {
-        set { gameData.playerData.hasDoubleMissiles = value; SaveData(); }
-        get { return gameData.playerData.hasDoubleMissiles; }
+        if (playerObj == null)
+            return false;
+
+        var player = playerObj.GetComponent<Submarine>();
+        if (player == null) return false;
+
+        UpdatePlayerSkills(status, player);
+        return true;
     }
 
-    public static bool TrackingMissilesStatus
+    private static void UpdatePlayerSkills(bool status, Submarine player)
     {
-        set { gameData.playerData.hasTrackingMissiles = value; SaveData(); }
-        get { return gameData.playerData.hasTrackingMissiles; }
+        gameData.playerData.submarineSkillLock.doubleMissile = status;
+        player.skills = gameData.playerData.submarineSkillLock;
+
+        SaveData();
     }
+
+    public static bool UpdateTrackingMissilesStatus(GameObject playerObj, bool status)
+    {
+        if (playerObj == null)
+            return false;
+
+        var player = playerObj.GetComponent<Submarine>();
+        if (player == null) return false;
+
+
+        gameData.playerData.submarineSkillLock.trackingMissile = status;
+        player.skills = gameData.playerData.submarineSkillLock;
+
+        SaveData();
+        return true;
+    }
+
 
     static public void ResetData()
     {

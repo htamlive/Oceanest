@@ -45,6 +45,9 @@ public class ShopUI : MonoBehaviour
     [Space(20)]
     [SerializeField] GameObject mobileButton;
 
+    [SerializeField]
+    GameObject player;
+
     int newSelectedItemIndex = 0;
     int previousSelectedItemIndex = 0;
 
@@ -145,7 +148,7 @@ public class ShopUI : MonoBehaviour
             GameSharedUI.Instance.UpdateCoinsUIText();
 
             //Update DB's Data
-            shoppingItemDB.PurchaseItem(index);
+            shoppingItemDB.PurchaseItem(player, index);
 
             if (shoppingItemDB.IsPurchased(index))
             {
@@ -154,11 +157,11 @@ public class ShopUI : MonoBehaviour
             }
         }
         else
-            {
-                AnimateNoMoreCoinsText();
-                uiItem.AnimateShakeItem();
-            }
+        {
+            AnimateNoMoreCoinsText();
+            uiItem.AnimateShakeItem();
         }
+    }
 
        void AnimateNoMoreCoinsText() 
     { 

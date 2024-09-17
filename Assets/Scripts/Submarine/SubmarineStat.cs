@@ -41,6 +41,14 @@ public class SubmarineStat : MonoBehaviour
         }
 #endif
 
+#if UNITY_EDITOR
+        if (Input.GetKey(KeyCode.X))
+        {
+            GameDataManager.AddCoins(100);
+
+        }
+#endif
+
 
 
 

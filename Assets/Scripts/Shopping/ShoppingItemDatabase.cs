@@ -16,12 +16,12 @@ public class ShoppingItemDatabase : ScriptableObject
         return shoppingItems[index];
     }
 
-    public void PurchaseItem(int index)
+    public void PurchaseItem(GameObject player, int index)
     {
         Debug.Log("Shopping Items purchase: " + shoppingItems[index].name);
         if(shoppingItems[index].isPurchased)
             return;
-        shoppingItems[index].Purchase();
+        shoppingItems[index].Purchase(player);
     }
 
     public void MarkPurchased(int index)
