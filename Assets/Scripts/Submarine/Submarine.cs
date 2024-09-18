@@ -162,7 +162,7 @@ public class Submarine : MonoBehaviour {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
         {
             subStat.Damage(wallCollisionDamage);
-            characterEffects.cameraEffects.Shake(100f, 1f);
+            characterEffects.cameraEffects.Shake(200f, 1f);
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("Boss"))
         {

@@ -20,13 +20,13 @@ TagManager:
   - Boid
   - Obstacle
   - Wall
-  - 
+  - Player
   - 
   - 
   - 
   - 
   - SoundTrigger
-  - 
+  - PostProcessing
   - 
   - 
   - 
