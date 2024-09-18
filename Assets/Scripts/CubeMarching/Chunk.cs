@@ -19,7 +19,8 @@ public class Chunk : MonoBehaviour {
             mesh.Clear ();
             gameObject.SetActive (false);
         } else {
-            DestroyImmediate (gameObject, false);
+            DestroyImmediate(gameObject, false);
+            //Destroy(gameObject);
         }
     }
 

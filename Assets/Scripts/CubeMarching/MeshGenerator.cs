@@ -29,6 +29,7 @@ public class MeshGenerator : MonoBehaviour {
     public float isoLevel;
     public float boundsSize = 1;
     public Vector3 offset = Vector3.zero;
+    public Vector3Int offsetPosition = Vector3Int.zero;
 
     [Range (2, 100)]
     public int numPointsPerAxis = 30;
@@ -37,7 +38,7 @@ public class MeshGenerator : MonoBehaviour {
     public bool showBoundsGizmo = true;
     public Color boundsGizmoCol = Color.white;
 
-    GameObject chunkHolder;
+    public GameObject chunkHolder;
     const string chunkHolderName = "Chunks Holder";
     List<Chunk> chunks;
     Dictionary<Vector3Int, Chunk> existingChunks;
@@ -54,7 +55,7 @@ public class MeshGenerator : MonoBehaviour {
         if (Application.isPlaying && !fixedMapSize) {
             InitVariableChunkStructures ();
 
-            var oldChunks = FindObjectsOfType<Chunk> ();
+            var oldChunks = chunkHolder.GetComponentsInChildren<Chunk> ();
             for (int i = oldChunks.Length - 1; i >= 0; i--) {
                 Destroy (oldChunks[i].gameObject);
             }
@@ -113,7 +114,7 @@ public class MeshGenerator : MonoBehaviour {
 
         Vector3 p = viewer.position;
         Vector3 ps = p / boundsSize;
-        Vector3Int viewerCoord = new Vector3Int (Mathf.RoundToInt (ps.x), Mathf.RoundToInt (ps.y), Mathf.RoundToInt (ps.z));
+        Vector3Int viewerCoord = new(Mathf.RoundToInt (ps.x), Mathf.RoundToInt (ps.y), Mathf.RoundToInt (ps.z));
 
         int maxChunksInView = Mathf.CeilToInt (viewDistance / boundsSize);
         float sqrViewDistance = viewDistance * viewDistance;
@@ -217,7 +218,8 @@ public class MeshGenerator : MonoBehaviour {
         for (int i = 0; i < numTris; i++) {
             for (int j = 0; j < 3; j++) {
                 meshTriangles[i * 3 + j] = i * 3 + j;
-                vertices[i * 3 + j] = tris[i][j];
+                vertices[i * 3 + j] = tris[i][j] + gameObject.transform.parent.position;
+                
             }
         }
         mesh.vertices = vertices;
@@ -293,13 +295,14 @@ public class MeshGenerator : MonoBehaviour {
     void InitChunks () {
         CreateChunkHolder ();
         chunks = new List<Chunk> ();
-        List<Chunk> oldChunks = new List<Chunk> (FindObjectsOfType<Chunk> ());
+        List<Chunk> oldChunks = new(chunkHolder.GetComponentsInChildren<Chunk> ());
 
         // Go through all coords and create a chunk there if one doesn't already exist
         for (int x = 0; x < numChunks.x; x++) {
             for (int y = 0; y < numChunks.y; y++) {
                 for (int z = 0; z < numChunks.z; z++) {
-                    Vector3Int coord = new Vector3Int (x, y, z);
+                    Vector3Int coord = new(x, y, z);
+                    coord += offsetPosition;
                     bool chunkAlreadyExists = false;
 
                     // If chunk already exists, add it to the chunks list, and remove from the old list.
@@ -318,7 +321,7 @@ public class MeshGenerator : MonoBehaviour {
                         chunks.Add (newChunk);
                     }
 
-                    chunks[chunks.Count - 1].SetUp (mat, generateColliders);
+                    chunks[^1].SetUp (mat, generateColliders);
                 }
             }
         }
@@ -330,7 +333,7 @@ public class MeshGenerator : MonoBehaviour {
     }
 
     Chunk CreateChunk (Vector3Int coord) {
-        GameObject chunk = new GameObject ($"Chunk ({coord.x}, {coord.y}, {coord.z})");
+        GameObject chunk = new ($"Chunk ({coord.x}, {coord.y}, {coord.z})");
         chunk.transform.parent = chunkHolder.transform;
         Chunk newChunk = chunk.AddComponent<Chunk> ();
         newChunk.coord = coord;
@@ -367,7 +370,7 @@ public class MeshGenerator : MonoBehaviour {
 
             List<Chunk> chunks = (this.chunks == null) ? new List<Chunk> (FindObjectsOfType<Chunk> ()) : this.chunks;
             foreach (var chunk in chunks) {
-                Bounds bounds = new Bounds (CentreFromCoord (chunk.coord), Vector3.one * boundsSize);
+                Bounds bounds = new(CentreFromCoord (chunk.coord), Vector3.one * boundsSize);
                 Gizmos.color = boundsGizmoCol;
                 Gizmos.DrawWireCube (CentreFromCoord (chunk.coord), Vector3.one * boundsSize);
             }

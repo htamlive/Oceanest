@@ -107,7 +107,7 @@ public class Submarine : MonoBehaviour {
         float targetYawVelocity = Input.GetAxisRaw("Horizontal") * maxTurnSpeed;
         yawVelocity = Mathf.Lerp(yawVelocity, targetYawVelocity, Time.deltaTime * smoothTurnSpeed);
 
-        transform.localEulerAngles += (Vector3.up * yawVelocity + Mathf.Sign(speedLevel) * Vector3.right * pitchVelocity) * Time.deltaTime * Mathf.Sign(speedLevel) * Mathf.Max(0.2f, Mathf.Abs(speedLevel) / speedMaxLevel);
+        transform.localEulerAngles += Mathf.Max(0.2f, Mathf.Abs(speedLevel) / speedMaxLevel) * Mathf.Sign(speedLevel) * Time.deltaTime * (Vector3.up * yawVelocity + Mathf.Sign(speedLevel) * pitchVelocity * Vector3.right);
     }
 
     private void Balance()
@@ -120,7 +120,7 @@ public class Submarine : MonoBehaviour {
         }
         float targetRollVelocity = (targetRollAngle - currentRollAngle) * maxRollSpeed;
         float rollVelocity = Mathf.Lerp(0, targetRollVelocity, Time.deltaTime * smoothTurnSpeed);
-        transform.localEulerAngles += Vector3.forward * rollVelocity * Time.deltaTime;
+        transform.localEulerAngles += rollVelocity * Time.deltaTime * Vector3.forward;
     }
 
     private void SpinFan()
