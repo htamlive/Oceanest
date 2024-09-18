@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public GameObject winScreen;
     public HUD hud;
     public GameObject WiningPoint;
+    public DialogueBoxController dialogueBoxController;
+    public bool bossDefeated = false;
 
     public List<SubmarineStat> submarineStats;
 
