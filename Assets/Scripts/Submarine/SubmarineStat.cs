@@ -41,13 +41,21 @@ public class SubmarineStat : MonoBehaviour
         }
 #endif
 
-//#if UNITY_EDITOR
-//        if (Input.GetKey(KeyCode.X))
-//        {
-//            GameDataManager.AddCoins(100);
+#if UNITY_EDITOR
+        if (Input.GetKey(KeyCode.N))
+        {
+            GameDataManager.AddCoins(100);
 
-//        }
-//#endif
+        }
+#endif
+
+#if UNITY_EDITOR
+        if (Input.GetKey(KeyCode.M))
+        {
+            GameManager.Instance.ShowLoseScreen();
+
+        }
+#endif
 
 
 
@@ -88,7 +96,8 @@ public class SubmarineStat : MonoBehaviour
         //Hide(true);
         //effects.DieEffect();
         //UpdateDie();
-        GameManager.Instance.ResetGamePlay();
+        //GameManager.Instance.ResetGamePlay();
+        GameManager.Instance.ShowLoseScreen();
         yield return null;
     }
 }

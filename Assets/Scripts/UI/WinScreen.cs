@@ -20,7 +20,7 @@ public class WinScreen : MonoBehaviour
     {
         //GameManager.Instance.audioSource.PlayOneShot(openSound);
         yield return new WaitForSeconds(.5f);
-        winTextAnimator.Play("WinShowUp");
+        winTextAnimator.Play("TextShowUp");
         yield return new WaitForSeconds(1f);
         Time.timeScale = 0f;
 

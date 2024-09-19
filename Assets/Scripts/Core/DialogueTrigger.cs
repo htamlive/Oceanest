@@ -62,7 +62,7 @@ public class DialogueTrigger : MonoBehaviour
                 }       
                 else
                 {
-                    GameManager.Instance.dialogueBoxController.AppearV2("Thank you", characterName, this, false, finishTalkingAnimatorBool, GameManager.Instance.releaseWiningPoint, "", repeat);
+                    GameManager.Instance.dialogueBoxController.AppearV2("Thank you", characterName, this, false, finishTalkingAnimatorBool, GameManager.Instance.ReleaseWiningPoint, "", repeat);
                     //GameManager.Instance.dialogueBoxController.Appear(dialogueStringB, characterName, this, true, audioLinesB, audioChoices, "", null, "", repeat);
                 }
                 sleeping = true;

@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
     public GameObject winScreen;
+    public GameObject loseScreen;
     public HUD hud;
     public GameObject WiningPoint;
     public DialogueBoxController dialogueBoxController;
@@ -34,9 +35,14 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void releaseWiningPoint()
+    public void ReleaseWiningPoint()
     {
         WiningPoint.SetActive(true);
+    }
+
+    public void ShowLoseScreen()
+    {
+        loseScreen.SetActive(true);
     }
 
     // Update is called once per frame
@@ -55,7 +61,7 @@ public class GameManager : MonoBehaviour
 #if UNITY_EDITOR
         if (Input.GetKey(KeyCode.V))
         {
-            releaseWiningPoint();
+            ReleaseWiningPoint();
             //WinGame();
         }
 #endif

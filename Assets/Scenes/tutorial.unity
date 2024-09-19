@@ -247,12 +247,17 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1785678350640272293, guid: 87ec13e15b304b346b23eb7a02bef16d, type: 3}
   m_PrefabInstance: {fileID: 200924569}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 200924571}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1690c0ea8f9e4b642b163514608de285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &200924571 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4484732145560889039, guid: 87ec13e15b304b346b23eb7a02bef16d, type: 3}
+  m_PrefabInstance: {fileID: 200924569}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &252942797
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,6 +642,10 @@ PrefabInstance:
       propertyPath: coinsUIText.Array.data[0]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 992585343506070845, guid: f010f191cf857a346a640bb81453818f, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 200924571}
     - target: {fileID: 1487989286314837934, guid: f010f191cf857a346a640bb81453818f, type: 3}
       propertyPath: submarineStat
       value: 
@@ -2715,7 +2724,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6866946072622447195, guid: 87ec13e15b304b346b23eb7a02bef16d, type: 3}
   m_PrefabInstance: {fileID: 200924569}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 200924571}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b40f4d6494439c48a6383388bda3141, type: 3}
@@ -2731,7 +2740,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7342703163143972481, guid: 87ec13e15b304b346b23eb7a02bef16d, type: 3}
   m_PrefabInstance: {fileID: 200924569}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 200924571}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6fb6ed8fd23e0344094c2d59d44de018, type: 3}
