@@ -40,11 +40,6 @@ public class DialogueTrigger : MonoBehaviour
     public Animator useItemAnimator; //If the player uses an item, like a key, an animator can be fired (ie to open a door)
     [SerializeField] private string useItemAnimatorBool; //An animator bool can be set to true once an item is used, like ae key.
 
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("Entering");
-    }
     void OnTriggerStay(Collider col)
     {
         Debug.Log("OnTriggerStay");
@@ -53,9 +48,11 @@ public class DialogueTrigger : MonoBehaviour
             iconAnimator.SetBool("active", true);
             if (autoHit || (Input.GetAxis("Submit") > 0))
             {
+                Debug.Log("Submit");
                 iconAnimator.SetBool("active", false);
                 if (!GameManager.Instance.bossDefeated)
                 {
+                    Debug.Log("Not defeat");
                     GameManager.Instance.dialogueBoxController.Appear(dialogueStringA, characterName, this, false, audioLinesA, audioChoices, finishTalkingAnimatorBool, finishTalkingActivateObject, finishTalkingActivateObjectString, repeat);
                 }
                 else
