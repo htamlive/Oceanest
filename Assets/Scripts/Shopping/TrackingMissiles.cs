@@ -9,6 +9,6 @@ public class TrackingMissiles : ShoppingItem
     public override void Purchase(GameObject player)
     {
         isPurchased = true;
-        GameDataManager.UpdateDoubleMissilesStatus(player, true);
+        GameDataManager.UpdateTrackingMissilesStatus(player, true);
     }
 }

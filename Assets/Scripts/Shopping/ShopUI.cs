@@ -74,6 +74,7 @@ public class ShopUI : MonoBehaviour
 
     void GenerateShopItemsUI()
     {
+        shoppingItemDB.ResetPurchase();
         ////Loop throw save purchased items and make them as purchased in the Database array
         for (int i = 0; i < GameDataManager.GetAllPurchasedItem().Count; i++)
         {

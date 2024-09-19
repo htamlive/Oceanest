@@ -22,7 +22,7 @@ public class WormManager : MonoBehaviour
 
     public float GetHealthPercent()
     {
-        return currentHealth / maxHealth * 100f;
+        return currentHealth / maxHealth;
     }
 
     public void OnReceiveDamage(float damage)

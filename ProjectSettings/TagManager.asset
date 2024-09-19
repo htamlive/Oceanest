@@ -8,6 +8,7 @@ TagManager:
   - Storage
   - Crafting
   - PickUp
+  - Target
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - NPC
   - Mark
   - 
-  - 
+  - WinningPoint
   - SoundTrigger
   - PostProcessing
   - 

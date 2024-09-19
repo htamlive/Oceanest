@@ -15,5 +15,5 @@ MonoBehaviour:
   image: {fileID: 6560372312808483455, guid: 95650223949de3f4b9e2f0eac99d4412, type: 3}
   itemName: Tracking Missiles
   description: Let's make aiming easier
-  price: 15
-  isPurchased: 0
+  price: 10
+  isPurchased: 1

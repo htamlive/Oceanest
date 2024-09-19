@@ -13,6 +13,11 @@ public class BossHealthBar : MonoBehaviour
         healthBarWidthEased = 1;
     }
 
+    private void Update()
+    {
+        UpdateHealthBar();
+    }
+
     public void UpdateHealthBar()
     {
         //Debug.Log("Updating health bar " + player.health);

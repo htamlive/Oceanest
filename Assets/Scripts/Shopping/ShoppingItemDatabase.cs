@@ -11,6 +11,14 @@ public class ShoppingItemDatabase : ScriptableObject
         get { return shoppingItems.Length; }
     }
 
+    public void ResetPurchase()
+    {
+        for (int i = 0; i < shoppingItems.Length; i++)
+        {
+            shoppingItems[i].isPurchased = false;
+        }
+    }
+
     public ShoppingItem GetItem(int index)
     {
         return shoppingItems[index];
