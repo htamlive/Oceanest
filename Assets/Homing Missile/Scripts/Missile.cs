@@ -37,7 +37,10 @@ namespace Tarodev {
         {
             if (!_rb) _rb = GetComponent<Rigidbody>();
             initForward = transform.forward;
-            lastTargetPosition = _target.position;
+            if(_target != null)
+            {
+                lastTargetPosition = transform.position;
+            }
         }
 
         private void FixedUpdate() {
