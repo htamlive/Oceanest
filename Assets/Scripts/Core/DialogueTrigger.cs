@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 /*Triggers a dialogue conversation, passing unique commands and information to the dialogue box and inventory system for fetch quests, etc.*/
 
@@ -42,22 +43,27 @@ public class DialogueTrigger : MonoBehaviour
 
     void OnTriggerStay(Collider col)
     {
-        Debug.Log("OnTriggerStay");
+        //Debug.Log("OnTriggerStay");
         if (col.gameObject == player.gameObject && !sleeping && !completed)
         {
             iconAnimator.SetBool("active", true);
             if (autoHit || (Input.GetAxis("Submit") > 0))
             {
-                Debug.Log("Submit");
+                //Debug.Log("Submit");
                 iconAnimator.SetBool("active", false);
-                if (!GameManager.Instance.bossDefeated)
+                var gameStatus = GameDataManager.GetGameStatus();
+                if (!gameStatus.bossDefeated)
                 {
-                    Debug.Log("Not defeat");
-                    GameManager.Instance.dialogueBoxController.Appear(dialogueStringA, characterName, this, false, audioLinesA, audioChoices, finishTalkingAnimatorBool, finishTalkingActivateObject, finishTalkingActivateObjectString, repeat);
-                }
+                    //Debug.Log("Not defeat");
+                    if(!gameStatus.receivedSupport)
+                        GameManager.Instance.dialogueBoxController.AppearV2("Greeting", characterName, this, false, finishTalkingAnimatorBool, GameDataManager.ReceiveSupportedCoins, "", repeat);
+                    else
+                        GameManager.Instance.dialogueBoxController.AppearV2("Advise", characterName, this, false, finishTalkingAnimatorBool, () => { }, "", repeat);
+                }       
                 else
                 {
-                    GameManager.Instance.dialogueBoxController.Appear(dialogueStringB, characterName, this, true, audioLinesB, audioChoices, "", null, "", repeat);
+                    GameManager.Instance.dialogueBoxController.AppearV2("Thank you", characterName, this, false, finishTalkingAnimatorBool, () => { }, "", repeat);
+                    //GameManager.Instance.dialogueBoxController.Appear(dialogueStringB, characterName, this, true, audioLinesB, audioChoices, "", null, "", repeat);
                 }
                 sleeping = true;
             }
@@ -67,6 +73,7 @@ public class DialogueTrigger : MonoBehaviour
             iconAnimator.SetBool("active", false);
         }
     }
+
 
     void OnTriggerExit(Collider col)
     {

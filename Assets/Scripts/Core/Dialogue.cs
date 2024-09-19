@@ -12,7 +12,7 @@ public class Dialogue : MonoBehaviour
     void Start()
     {
         //NPC
-        dialogue.Add("CharacterA", new string[] {
+        dialogue.Add("Greeting", new string[] {
             "At last, the savior from the ancient prophecy has arrived. Welcome, brave adventurer. I have waited countless years for your coming.",
             "The only way to escape this cursed place is to defeat the ancient sea beast, Thal'Zaroth, whose shadow darkens these waters.",
             "Fear not, for I shall aid you in your quest.",
@@ -32,7 +32,14 @@ public class Dialogue : MonoBehaviour
         //    "What else can you do?"
         //});
 
-        dialogue.Add("CharacterB", new string[] {
+        dialogue.Add("Advise", new string[] {
+            "You return, yet Thal'Zaroth still stirs beneath the waves. The sea remains restless, and the curse lingers.",
+            "But fear not, adventurer—such a foe is not easily vanquished.",
+            "Take heart. Reflect on your skills, prepare yourself further.",
+            "The beast’s defeat requires patience, strength, and wit. When you are ready once more, the sea will be waiting for your triumphant return."
+        });
+
+        dialogue.Add("Thank you", new string[] {
             "Thank you, brave adventurer, for vanquishing the wicked sea monster that cursed this place. Its dark magic had bound me for centuries, but now, thanks to your courage, I am free.",
             "In gratitude, I will cast a spell to release a magical sphere of immense power.",
             "That sphere can help you return home and only can appear once you return!",

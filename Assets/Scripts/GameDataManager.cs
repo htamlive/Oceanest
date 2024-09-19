@@ -6,6 +6,7 @@ using UnityEngine.TextCore.Text;
 using UnityEngine;
 using System;
 using UnityEditor;
+using JetBrains.Annotations;
 
 
 [System.Serializable]
@@ -25,10 +26,18 @@ public class PlayerData
 }
 
 [System.Serializable]
+public class GameStatus
+{
+    public bool bossDefeated = false;
+    public bool receivedSupport = false;
+}
+
+[System.Serializable]
 public class GameData
 {
     public ItemsShopData shopData = new();
     public PlayerData playerData = new();
+    public GameStatus gameStatus = new();
 }
 
 public static class GameDataManager
@@ -51,6 +60,12 @@ public static class GameDataManager
 
         gameData.playerData.coins += amount;
         SaveData();
+    }
+
+    public static void ReceiveSupportedCoins()
+    {
+        gameData.playerData.coins += 15;
+        gameData.gameStatus.receivedSupport = true;
     }
 
     public static bool CanSpendCoins(int amount)
@@ -97,6 +112,11 @@ public static class GameDataManager
     public static PlayerData GetPlayerData()
     {
         return gameData.playerData;
+    }
+
+    public static GameStatus GetGameStatus()
+    {
+        return gameData.gameStatus;
     }
 
     public static void UpdatePlayerTransformAndSave(Transform transform)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
 
 /*Controls the dialogue box and it's communication with Dialogue.cs, which contains the character dialogue*/
 
@@ -16,6 +17,8 @@ public class DialogueBoxController : MonoBehaviour
     [SerializeField] Dialogue dialogue;
     private DialogueTrigger currentDialogueTrigger;
     private GameObject finishTalkingActivateGameObject;
+
+    public UnityAction finishTalkingCallback { get; private set; }
 
     [Header("Sounds")]
     private AudioClip[] audioLines;
@@ -117,6 +120,41 @@ public class DialogueBoxController : MonoBehaviour
         }
     }
 
+    public void AppearV2(string fName, string characterName, DialogueTrigger dTrigger, bool useItemAfterClose, string finishTalkingAnimBool, UnityAction action, string finishTalkingActivateGOString, bool r)
+    {
+        repeat = r;
+        finishTalkingAnimatorBool = finishTalkingAnimBool;
+        finishTalkingCallback = action;
+        finishTalkingActivateGameObjectString = finishTalkingActivateGOString;
+        dialogueTrigger = dTrigger;
+        choice1Mesh.text = "";
+        choice2Mesh.text = "";
+        fileName = fName;
+
+        if (useItemAfterClose)
+        {
+            currentDialogueTrigger = dialogueTrigger;
+        }
+
+        nameMesh.text = characterName;
+        characterDiologue = dialogue.dialogue[fileName];
+
+        if (dialogue.dialogue.ContainsKey(fileName + "Choice1"))
+        {
+            choiceDiologue = dialogue.dialogue[fileName + "Choice1"];
+            choiceLocation = GetChoiceLocation();
+        }
+        else
+        {
+            choiceLocation = characterDiologue.Length - 1;
+        }
+
+        animator.SetBool("active", true);
+        activated = true;
+        player.Freeze(true);
+        StartCoroutine(Advance());
+    }
+
     public void Appear(string fName, string characterName, DialogueTrigger dTrigger, bool useItemAfterClose, AudioClip[] audioL, AudioClip[] audioC, string finishTalkingAnimBool, GameObject finishTalkingActivateGObject, string finishTalkingActivateGOString, bool r)
     {
         repeat = r;
@@ -185,7 +223,11 @@ public class DialogueBoxController : MonoBehaviour
             dialogueTrigger.GetComponent<DialogueTrigger>().useItemAnimator.SetBool(finishTalkingAnimatorBool, true);
         }
 
-        if (finishTalkingActivateGameObject != null)
+        if(finishTalkingCallback != null)
+        {
+            finishTalkingCallback.Invoke();
+        }
+        else if (finishTalkingActivateGameObject != null)
         {
             finishTalkingActivateGameObject.SetActive(true);
         }
@@ -241,7 +283,7 @@ public class DialogueBoxController : MonoBehaviour
         }
 
         textMesh.text = "";
-        StartCoroutine("TypeText");
+        StartCoroutine(nameof(TypeText));
 
         //Wait before typing
         yield return new WaitForSeconds(.4f);
@@ -253,7 +295,7 @@ public class DialogueBoxController : MonoBehaviour
         }
 
         //Play character audio
-        if (audioLines.Length != 0)
+        if (audioLines != null && audioLines.Length != 0)
         {
             dialogueAudioSource.Stop();
             if (index < audioLines.Length)
@@ -268,7 +310,7 @@ public class DialogueBoxController : MonoBehaviour
 
     IEnumerator TypeText()
     {
-        WaitForSeconds wait = new WaitForSeconds(.01f);
+        WaitForSeconds wait = new(.01f);
         foreach (char c in characterDiologue[index])
         {
             cPos++;
