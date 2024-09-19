@@ -218,7 +218,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 3, y: 576}
+    uvTransform: {x: 2, y: 576}
     spritePosition: {x: 318, y: 1933}
   - name: IconCoin
     originalName: 
@@ -304,10 +304,10 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 4, y: 300}
     spritePosition: {x: 467, y: 540}
-  - name: IconE
+  - name: IconX
     originalName: 
-    pivot: {x: 0.5, y: -0.5}
-    alignment: 9
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -315,7 +315,7 @@ ScriptedImporter:
       y: 609
       width: 97
       height: 117
-    spriteID: 210a51276efcac74b8b0c8c33f8dba7f
+    spriteID: 9fa7f6c1a2e6891448da45c62f58bded
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -506,12 +506,12 @@ ScriptedImporter:
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: IconE
-    spriteName: IconE
+  - name: IconX
+    spriteName: IconX
     isGroup: 0
     parentIndex: -1
-    spriteID: 210a51276efcac74b8b0c8c33f8dba7f
-    layerID: 222
+    spriteID: 9fa7f6c1a2e6891448da45c62f58bded
+    layerID: 233
     mosaicPosition: {x: 4, y: 609}
     flatten: 0
     isImported: 1
