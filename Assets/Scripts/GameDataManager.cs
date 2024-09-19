@@ -260,4 +260,10 @@ public static class GameDataManager
     {
         gameData.playerData.health = gameData.playerData.maxHealth;
     }
+
+    internal static void UpdateBossDie()
+    {
+        gameData.gameStatus.bossDefeated = true;
+        SaveData();
+    }
 }

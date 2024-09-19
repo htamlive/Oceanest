@@ -11,7 +11,7 @@ public class DialogueTrigger : MonoBehaviour
     [Header ("References")]
     public DialogueInteractable player;
     [SerializeField] private GameObject finishTalkingActivateObject; //After completing a conversation, an object can activate. 
-    [SerializeField] private Animator iconAnimator; //The E icon animator
+    [SerializeField] private Animator iconAnimator; 
 
     [Header("Trigger")]
     [SerializeField] private bool autoHit; //Does the player need to press the interact button, or will it simply fire automatically?
@@ -62,7 +62,7 @@ public class DialogueTrigger : MonoBehaviour
                 }       
                 else
                 {
-                    GameManager.Instance.dialogueBoxController.AppearV2("Thank you", characterName, this, false, finishTalkingAnimatorBool, () => { }, "", repeat);
+                    GameManager.Instance.dialogueBoxController.AppearV2("Thank you", characterName, this, false, finishTalkingAnimatorBool, GameManager.Instance.releaseWiningPoint, "", repeat);
                     //GameManager.Instance.dialogueBoxController.Appear(dialogueStringB, characterName, this, true, audioLinesB, audioChoices, "", null, "", repeat);
                 }
                 sleeping = true;
