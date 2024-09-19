@@ -175,6 +175,7 @@ MonoBehaviour:
   _deviationAmount: 15
   _deviationSpeed: 3
   _damage: 10
+  explodeFX: {fileID: 8300000, guid: 1d2ebba6ad9137f47b5f3376a3949d54, type: 3}
 --- !u!54 &184470500350564771
 Rigidbody:
   m_ObjectHideFlags: 0

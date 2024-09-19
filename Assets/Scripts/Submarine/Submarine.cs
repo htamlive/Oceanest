@@ -145,10 +145,12 @@ public class Submarine : MonoBehaviour {
 
         if (skills.doubleMissile)
         {
-            GameObject missileObject_1 = Instantiate(missilePrefab, transform.position + transform.forward * 6f - transform.up * 3f - transform.right * 2, Quaternion.Euler(transform.localEulerAngles));
-            GameObject missileObject_2 = Instantiate(missilePrefab, transform.position + transform.forward * 6f - transform.up * 3f + transform.right * 2, Quaternion.Euler(transform.localEulerAngles));
+            GameObject missileObject_1 = Instantiate(missilePrefab, transform.position + transform.forward * 6f - transform.up * 3f - transform.right * 1, Quaternion.Euler(transform.localEulerAngles));
+            GameObject missileObject_2 = Instantiate(missilePrefab, transform.position + transform.forward * 6f - transform.up * 3f + transform.right * 1, Quaternion.Euler(transform.localEulerAngles));
             Missile missile_1 = missileObject_1.GetComponent<Missile>();
             Missile missile_2 = missileObject_2.GetComponent<Missile>();
+            missile_1.cameraEffects = characterEffects.cameraEffects;
+            missile_2.cameraEffects = characterEffects.cameraEffects;
 
             if (skills.trackingMissile)
             {
@@ -167,16 +169,17 @@ public class Submarine : MonoBehaviour {
         {
             GameObject missileObject = Instantiate(missilePrefab, transform.position + transform.forward * 6f - transform.up * 2f, Quaternion.Euler(transform.localEulerAngles));
             Missile missile = missileObject.GetComponent<Missile>();
+            missile.cameraEffects = characterEffects.cameraEffects;
 
             if (skills.trackingMissile)
             {
                 if (targetList.Length > 0)
                 {
                     missile._target = targetList[Random.Range(0, targetList.Length - 1)].GetComponent<Transform>();
-                    Debug.Log(missile._target + " | " + missile._target.position);
                 }
             }
         }
+        characterEffects.AttackEffect();
     }
 
     private void OnCollisionEnter(Collision collision)

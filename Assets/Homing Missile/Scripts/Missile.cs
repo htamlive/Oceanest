@@ -26,6 +26,10 @@ namespace Tarodev {
         [Header("DAMAGE")]
         [SerializeField] private int _damage = 100;
 
+        [Header("Effects")]
+        public CameraEffects cameraEffects;
+        [SerializeField] private AudioClip explodeFX;
+
         private Vector3 initForward;
         private Vector3 lastTargetPosition;
 
@@ -97,6 +101,8 @@ namespace Tarodev {
             }
             Debug.Log("Missile hit: " + collision.gameObject.name);
             if (_explosionPrefab) Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+            GameManager.Instance.audioPlayer.PlayOneShot(explodeFX);
+            cameraEffects.Shake(50, 1f);
             Destroy(gameObject);
         }
 

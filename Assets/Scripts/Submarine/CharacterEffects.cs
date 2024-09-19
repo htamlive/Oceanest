@@ -23,7 +23,8 @@ public class CharacterEffects : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        body = GetComponent<Rigidbody>();
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -73,6 +74,12 @@ public class CharacterEffects : MonoBehaviour
             yield return null;
         }
         yield return null;
+    }
+
+    public void AttackEffect()
+    {
+        Debug.Log("AttackEffect");
+        body.AddForce(body.transform.forward * (-1000) + body.transform.up * 100, ForceMode.Impulse);
     }
 
     //private IEnumerator FadeOutAndDisableEffect()
