@@ -22,9 +22,15 @@ public class AnimatorFunctions : MonoBehaviour
 
 
     //Play a sound through the specified audioSource
-    void PlaySound(AudioClip whichSound)
+    void PlaySound(AudioClip? whichSound)
     {
-        audioSource.PlayOneShot(whichSound);
+        if (whichSound != null)
+        {
+            audioSource.PlayOneShot(whichSound);
+        } else
+        {
+            Debug.Log("which Sound is null");
+        }
     }
 
     public void EmitParticles(int amount)

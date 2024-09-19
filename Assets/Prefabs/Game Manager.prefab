@@ -2288,6 +2288,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winScreen: {fileID: 0}
+  hud: {fileID: 0}
+  WiningPoint: {fileID: 0}
+  dialogueBoxController: {fileID: 0}
+  bossDefeated: 0
+  submarineStats:
+  - {fileID: 0}
   camera: {fileID: 0}
   pauseMenu: {fileID: 0}
 --- !u!1 &595537159883892841
