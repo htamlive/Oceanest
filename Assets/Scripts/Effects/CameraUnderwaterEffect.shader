@@ -4,8 +4,8 @@ Shader "Hidden/CameraUnderwaterEffect"
     {
         [HideInInspector] _MainTex ("Texture", 2D) = "white" {}
         [HideInInspector] _DepthMap("Texture", 2D) = "black" {}
-        [HideInInspector] _DepthStart("Depth Start Distance", float) = 1
-        [HideInInspector] _DepthEnd("Depth End Distance", float) = 300
+        [HideInInspector] _DepthStart("Depth Start Distance", float) = 0
+        [HideInInspector] _DepthEnd("Depth End Distance", float) = 2000
         [HideInInspector] _DepthColor("Depth Color", Color) = (1,1,1,1)
         [HideInInspector] _WaterLevel("Water Level", Vector) = (0.5, 0.5, 0)
     }
@@ -72,6 +72,7 @@ Shader "Hidden/CameraUnderwaterEffect"
 
                 // Scale the intensity of the depth colour based on the depth by lerping it
                 // between the original pixel colour and our colour based on the depthValue of the pixel
+
                 return lerp(col, _DepthColor, depth);
 
             }

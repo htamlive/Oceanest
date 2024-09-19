@@ -15,14 +15,14 @@ TagManager:
   - Water Surface
   - Water
   - UI
-  - Camera
+  - 
   - Boss
   - Boid
   - Obstacle
   - Wall
   - Player
-  - 
-  - 
+  - NPC
+  - Mark
   - 
   - 
   - SoundTrigger

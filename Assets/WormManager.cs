@@ -58,6 +58,7 @@ public class WormManager : MonoBehaviour
     private void OnDeath()
     {
         animator.SetBool("death", true);
+        GameDataManager.UpdateBossDie();
     }
 
     private void FixedUpdate()
