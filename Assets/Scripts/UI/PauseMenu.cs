@@ -41,6 +41,7 @@ public class PauseMenu : MonoBehaviour
     public void RestartLevel()
     {
         Time.timeScale = 1f;
+        GameDataManager.ResetData();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
