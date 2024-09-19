@@ -40,6 +40,11 @@ public class DialogueTrigger : MonoBehaviour
     public Animator useItemAnimator; //If the player uses an item, like a key, an animator can be fired (ie to open a door)
     [SerializeField] private string useItemAnimatorBool; //An animator bool can be set to true once an item is used, like ae key.
 
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Entering");
+    }
     void OnTriggerStay(Collider col)
     {
         Debug.Log("OnTriggerStay");
