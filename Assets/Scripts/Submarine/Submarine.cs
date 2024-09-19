@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Tarodev;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class Submarine : MonoBehaviour {
@@ -98,6 +99,16 @@ public class Submarine : MonoBehaviour {
         Vector3 veloDiff = targetVeloVec - body.velocity;
         Vector3 movement = veloDiff * acceleration;
         body.AddForce(targetVeloVec * acceleration, ForceMode.Force);
+
+    }
+
+    public float CurrentVelocity()
+    {
+        var currentVelocity = body.velocity;
+        float sign = speedLevel / (float)speedMaxLevel;
+        var currentSpeed = currentVelocity.magnitude;
+
+        return currentSpeed * sign;
     }
 
     private void Turn()
