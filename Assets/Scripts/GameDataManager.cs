@@ -161,16 +161,15 @@ public static class GameDataManager
         if (playerObj == null)
             return false;
 
-        var player = playerObj.GetComponent<Submarine>();
-        if (player == null) return false;
+        if (!playerObj.TryGetComponent<Submarine>(out var player)) return false;
 
-        UpdatePlayerSkills(status, player);
+        gameData.playerData.submarineSkillLock.doubleMissile = status;
+        UpdatePlayerSkills(player);
         return true;
     }
 
-    private static void UpdatePlayerSkills(bool status, Submarine player)
+    private static void UpdatePlayerSkills(Submarine player)
     {
-        gameData.playerData.submarineSkillLock.doubleMissile = status;
         player.skills = gameData.playerData.submarineSkillLock;
 
         SaveData();
@@ -186,8 +185,7 @@ public static class GameDataManager
 
 
         gameData.playerData.submarineSkillLock.trackingMissile = status;
-        player.skills = gameData.playerData.submarineSkillLock;
-
+        UpdatePlayerSkills(player);
         SaveData();
         return true;
     }
