@@ -13,33 +13,30 @@ public class Dialogue : MonoBehaviour
     {
         //NPC
         dialogue.Add("CharacterA", new string[] {
-            "Hi there!",
-            "I'm an NPC! This conversation is called 'npcA'...",
-            "If you go and find me 80 coins, my dialogue will move on to 'npcB'!",
-            "Feel free to edit my dialogue in the 'Dialogue.cs' file!",
-            "To keep it simple, you can also ask me one, and only one, question...",
-            "...Like you just did! And I'll just move on to the next sentence.",
-            "I'll answer that question, but it won't change much about the game!",
-            "You can always tweak the 'DialogueBox.cs' script to add more functionality!"
+            "At last, the savior from the ancient prophecy has arrived. Welcome, brave adventurer. I have waited countless years for your coming.",
+            "The only way to escape this cursed place is to defeat the ancient sea beast, Thal'Zaroth, whose shadow darkens these waters.",
+            "Fear not, for I shall aid you in your quest.",
+            "Take these 15 coins, use them to equip the skills you need to face Thal'Zaroth.",
+            "Your destiny awaits, and with it, the hope of our freedom. Go forth, and may the sea favor your courage!",
         });
 
-        dialogue.Add("CharacterAChoice1", new string[] {
-            "",
-            "",
-            "Let me go find some coins!",
-        });
+        //dialogue.Add("CharacterAChoice1", new string[] {
+        //    "",
+        //    "",
+        //    "Let me go find some coins!",
+        //});
 
-        dialogue.Add("CharacterAChoice2", new string[] {
-            "",
-            "",
-            "What else can you do?"
-        });
+        //dialogue.Add("CharacterAChoice2", new string[] {
+        //    "",
+        //    "",
+        //    "What else can you do?"
+        //});
 
         dialogue.Add("CharacterB", new string[] {
-            "Hey! You found 80 coins! That means 'npcB' is now being used inside 'Dialogue.cs'!",
-            "After my dialogue completes, I'll take 80 coins, or however many you specify in the inspector...",
-            "And I'll also give you a new ability!",
-            "In this case, how about a generic DOWNWARD SMASH? Simply attack while pressing down in mid-air!"
+            "Thank you, brave adventurer, for vanquishing the wicked sea monster that cursed this place. Its dark magic had bound me for centuries, but now, thanks to your courage, I am free.",
+            "In gratitude, I will cast a spell to release a magical sphere of immense power.",
+            "That sphere can help you return home and only can appear once you return!",
+            "May this gift aid you in your future quests. Farewell, and may the tides of fortune be ever in your favor!"
         });
     }
 }
