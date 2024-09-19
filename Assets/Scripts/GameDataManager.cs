@@ -26,6 +26,13 @@ public class PlayerData
 }
 
 [System.Serializable]
+public class BossData
+{
+    public float health = 100;
+    public float maxHealth = 100;
+}
+
+[System.Serializable]
 public class GameStatus
 {
     public bool bossDefeated = false;
@@ -38,6 +45,7 @@ public class GameData
     public ItemsShopData shopData = new();
     public PlayerData playerData = new();
     public GameStatus gameStatus = new();
+    public BossData bossData = new();
 }
 
 public static class GameDataManager
@@ -112,6 +120,19 @@ public static class GameDataManager
     public static PlayerData GetPlayerData()
     {
         return gameData.playerData;
+    }
+
+    public static BossData GetBossData()
+    {
+        return gameData.bossData;
+    }
+
+    public static void AddHealthBoss(float amount)
+    {
+        gameData.bossData.health += amount;
+        gameData.bossData.health = Math.Max(0, gameData.bossData.health);
+
+        SaveData();
     }
 
     public static GameStatus GetGameStatus()
