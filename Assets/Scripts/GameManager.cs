@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject WiningPoint;
     public DialogueBoxController dialogueBoxController;
     public bool bossDefeated = false;
+    public AudioSource audioPlayer;
 
     public List<SubmarineStat> submarineStats;
 

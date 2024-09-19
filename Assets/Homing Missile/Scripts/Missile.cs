@@ -6,7 +6,7 @@ namespace Tarodev {
     public class Missile : MonoBehaviour {
         [Header("REFERENCES")] 
         [SerializeField] private Rigidbody _rb;
-        public Target _target;
+        public Transform _target;
         [SerializeField] private GameObject _explosionPrefab;
 
         [Header("MOVEMENT")] 
@@ -26,12 +26,18 @@ namespace Tarodev {
         [Header("DAMAGE")]
         [SerializeField] private int _damage = 100;
 
+        [Header("Effects")]
+        public CameraEffects cameraEffects;
+        [SerializeField] private AudioClip explodeFX;
+
         private Vector3 initForward;
+        private Vector3 lastTargetPosition;
 
         private void Start()
         {
             if (!_rb) _rb = GetComponent<Rigidbody>();
             initForward = transform.forward;
+            lastTargetPosition = _target.position;
         }
 
         private void FixedUpdate() {
@@ -44,20 +50,21 @@ namespace Tarodev {
             else
             {
                 _rb.velocity = transform.forward * _speed;
-                var leadTimePercentage = Mathf.InverseLerp(_minDistancePredict, _maxDistancePredict, Vector3.Distance(transform.position, _target.transform.position));
+                var leadTimePercentage = Mathf.InverseLerp(_minDistancePredict, _maxDistancePredict, Vector3.Distance(transform.position, _target.position));
 
                 PredictMovement(leadTimePercentage);
 
                 AddDeviation(leadTimePercentage);
 
                 RotateRocket();
+
+                lastTargetPosition = _target.position;
             }
         }
 
         private void PredictMovement(float leadTimePercentage) {
             var predictionTime = Mathf.Lerp(0, _maxTimePrediction, leadTimePercentage);
-
-            _standardPrediction = _target.Rb.position + _target.Rb.velocity * predictionTime;
+            _standardPrediction = _target.position + (_target.position - lastTargetPosition) / Time.fixedDeltaTime * predictionTime;
         }
 
         private void AddDeviation(float leadTimePercentage) {
@@ -94,6 +101,8 @@ namespace Tarodev {
             }
             Debug.Log("Missile hit: " + collision.gameObject.name);
             if (_explosionPrefab) Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+            GameManager.Instance.audioPlayer.PlayOneShot(explodeFX);
+            cameraEffects.Shake(50, 1f);
             Destroy(gameObject);
         }
 

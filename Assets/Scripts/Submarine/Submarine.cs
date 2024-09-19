@@ -35,6 +35,8 @@ public class Submarine : MonoBehaviour {
     SubmarineStat subStat;
     CharacterEffects characterEffects;
 
+    float lastEmittTime = 0;
+
     [Header("Spin Fan")]
     public float maxSpinSpeed = 5;
     public Transform spinFan;
@@ -48,6 +50,9 @@ public class Submarine : MonoBehaviour {
     [Header("Damage")]
     public int wallCollisionDamage = 5;
 
+    [Header("Attack")]
+    public float cooldown = 1f;
+
     void Start () {
         var playerData = GameDataManager.GetPlayerData();
         skills = playerData.submarineSkillLock;
@@ -57,6 +62,8 @@ public class Submarine : MonoBehaviour {
         body = GetComponent<Rigidbody>();
         subStat = GetComponent<SubmarineStat>();
         characterEffects = GetComponent<CharacterEffects>();
+
+        lastEmittTime = Time.time;
     }
 
     void Update () {
@@ -130,31 +137,49 @@ public class Submarine : MonoBehaviour {
 
     private void EmittMissile()
     {
-        if (!skills.canEmittMissile) return;
+        if (!skills.canEmittMissile || Time.time - lastEmittTime < cooldown) return;
+        lastEmittTime = Time.time;
+
+        GameObject[] targetList = GameObject.FindGameObjectsWithTag("Target");
+        Debug.Log(targetList.Length);
 
         if (skills.doubleMissile)
         {
-            GameObject missileObject_1 = Instantiate(missilePrefab, transform.position + transform.forward * 6f - transform.up * 3f - transform.right * 2, Quaternion.Euler(transform.localEulerAngles));
-            GameObject missileObject_2 = Instantiate(missilePrefab, transform.position + transform.forward * 6f - transform.up * 3f + transform.right * 2, Quaternion.Euler(transform.localEulerAngles));
+            GameObject missileObject_1 = Instantiate(missilePrefab, transform.position + transform.forward * 6f - transform.up * 3f - transform.right * 1, Quaternion.Euler(transform.localEulerAngles));
+            GameObject missileObject_2 = Instantiate(missilePrefab, transform.position + transform.forward * 6f - transform.up * 3f + transform.right * 1, Quaternion.Euler(transform.localEulerAngles));
             Missile missile_1 = missileObject_1.GetComponent<Missile>();
             Missile missile_2 = missileObject_2.GetComponent<Missile>();
+            missile_1.cameraEffects = characterEffects.cameraEffects;
+            missile_2.cameraEffects = characterEffects.cameraEffects;
 
             if (skills.trackingMissile)
             {
-                missile_1._target = GameObject.FindFirstObjectByType<Target>();
-                missile_2._target = GameObject.FindFirstObjectByType<Target>();
+                //missile_1._target = GameObject.FindFirstObjectByType<Target>();
+                //missile_2._target = GameObject.FindFirstObjectByType<Target>();
+                
+                if (targetList.Length > 0)
+                {
+                    missile_1._target = targetList[Random.Range(0, targetList.Length - 1)].GetComponent<Transform>();
+                    missile_2._target = targetList[Random.Range(0, targetList.Length - 1)].GetComponent<Transform>();
+
+                } 
             }
         }
         else
         {
             GameObject missileObject = Instantiate(missilePrefab, transform.position + transform.forward * 6f - transform.up * 2f, Quaternion.Euler(transform.localEulerAngles));
             Missile missile = missileObject.GetComponent<Missile>();
+            missile.cameraEffects = characterEffects.cameraEffects;
 
             if (skills.trackingMissile)
             {
-                missile._target = GameObject.FindFirstObjectByType<Target>();
+                if (targetList.Length > 0)
+                {
+                    missile._target = targetList[Random.Range(0, targetList.Length - 1)].GetComponent<Transform>();
+                }
             }
         }
+        characterEffects.AttackEffect();
     }
 
     private void OnCollisionEnter(Collision collision)

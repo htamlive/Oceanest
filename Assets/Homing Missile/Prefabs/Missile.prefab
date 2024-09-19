@@ -167,13 +167,15 @@ MonoBehaviour:
   _rb: {fileID: 184470500350564771}
   _target: {fileID: 0}
   _explosionPrefab: {fileID: 1939761216702417533}
-  _speed: 50
+  _speed: 150
   _rotateSpeed: 180
   _maxDistancePredict: 100
   _minDistancePredict: 5
   _maxTimePrediction: 5
   _deviationAmount: 15
   _deviationSpeed: 3
+  _damage: 10
+  explodeFX: {fileID: 8300000, guid: 1d2ebba6ad9137f47b5f3376a3949d54, type: 3}
 --- !u!54 &184470500350564771
 Rigidbody:
   m_ObjectHideFlags: 0
