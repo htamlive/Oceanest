@@ -14,6 +14,8 @@
 
 ![](README_Assets/posterOceanest.png)
 
+# Oceanest is now live on [itch.io](https://htamlive.itch.io/oceanest)!
+
 # **Introduction**
 
 Oceanest: A Deep-Sea Odyssey
@@ -349,6 +351,7 @@ The core implementation of this parallel computing can be found in the *BoidComp
 
 <!-- **![][image30]**   -->
 ![](README_Assets/image35.png)
+
 **The image of distribution of n \= 1000 points on a sphere**  
 **using Fibonacci Sphere Algorithm**
 
@@ -363,6 +366,7 @@ To further enhance the gameplay, *Oceanest* incorporates two important camera ef
 Camera damping is an effect that creates a smooth transition when turning the submarine. For example, when the player steers the submarine to the left, the camera shifts smoothly in that direction, giving the player a wider view of what’s happening on the left side. This effect not only improves the feel of the submarine’s movement but also provides additional visual information about the environment, helping players react more quickly to nearby obstacles or threats.
 
 ![](README_Assets/image30.png)
+
 **The camera shifts smoothly to the right, placing the submarine slightly to the left, providing a better view of the right side**
 
 Camera shaking is another effect designed to increase immersion. When the submarine takes damage, whether from an attack by a sea monster or a collision with the underwater terrain, the camera will shake slightly. This subtle shaking effect makes the player feel more connected to the submarine, reinforcing the impact of the damage. It’s a visual and sensory cue that helps players recognize when they’ve made a mistake or when their submarine is in danger, adding tension and excitement to the gameplay.
