@@ -48,12 +48,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             var status = pauseMenu.gameObject.activeInHierarchy;
             pauseMenu.SetActive(!status);
         }
-        if (Input.GetKeyDown(KeyCode.Print) && !Utilities.CheckPlatform(RuntimePlatform.Android) && !Utilities.CheckPlatform(RuntimePlatform.WebGLPlayer))
+        if (Input.GetKeyDown(KeyCode.P) && !Utilities.CheckPlatform(RuntimePlatform.Android) && !Utilities.CheckPlatform(RuntimePlatform.WebGLPlayer))
         {
             Debug.Log("camera: " + camera);
             StartCoroutine(SteganographyScreenshot.CaptureAndEmbedData(camera));

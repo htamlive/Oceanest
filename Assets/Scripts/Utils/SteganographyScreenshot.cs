@@ -31,9 +31,9 @@ public static class SteganographyScreenshot
 
         Texture2D screenshot = LoadTexture(image);
 
-        //CompositeGameData gameData = GameDataManager.ComposeGameData();
-        //byte[] dataBytes = Utilities.SerializeObject(gameData);
-        //EmbedData(screenshot, dataBytes);
+        var gameData = GameDataManager.GetGameData();
+        byte[] dataBytes = Utilities.SerializeObject(gameData);
+        EmbedData(screenshot, dataBytes);
 
         SaveTextureAsPNG(screenshot, screenshotPath);
     }
@@ -73,34 +73,9 @@ public static class SteganographyScreenshot
             }
         }
 
-        for(int i = dataBytes.Length * 8; i < texture.width * texture.height; i += 8)
-        {
-            for (int bit = 0; bit < 8; bit++)
-            {
-                int pixelIndex = i + bit;
-                Color32 pixel = pixels[pixelIndex];
-                pixel.a = (byte)(pixel.a & 0xFE);
-                pixels[pixelIndex] = pixel;
-            }
-        }
-
         texture.SetPixels32(pixels);
         texture.Apply();
     }
-
-    private static void SaveTextureAsPNG(Texture2D texture, string filePath)
-    {
-        byte[] bytes = texture.EncodeToPNG();
-        File.WriteAllBytes(filePath, bytes);
-    }
-
-    public static T ExtractGameDataFromImage<T>(string filePath)
-    {
-        byte[] dataBytes = ExtractDataFromImage(filePath);
-        return Utilities.DeserializeObject<T>(dataBytes);
-    }
-
-
 
     public static byte[] ExtractDataFromImage(string filePath)
     {
@@ -122,6 +97,22 @@ public static class SteganographyScreenshot
 
         return dataBytes;
     }
+
+    private static void SaveTextureAsPNG(Texture2D texture, string filePath)
+    {
+        byte[] bytes = texture.EncodeToPNG();
+        File.WriteAllBytes(filePath, bytes);
+    }
+
+    public static T ExtractGameDataFromImage<T>(string filePath)
+    {
+        byte[] dataBytes = ExtractDataFromImage(filePath);
+        return Utilities.DeserializeObject<T>(dataBytes);
+    }
+
+
+
+
 
     internal static GameData LoadData()
     {

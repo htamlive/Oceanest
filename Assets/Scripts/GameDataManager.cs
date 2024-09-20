@@ -81,7 +81,10 @@ public static class GameDataManager
         return (GetCoins() >= amount);
     }
 
-
+    public static GameData GetGameData()
+    {
+        return gameData;
+    }
     public static void SpendCoins(int amount, int playerIndex = 0)
     {
         gameData.playerData.coins -= amount;
