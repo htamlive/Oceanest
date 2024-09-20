@@ -51,6 +51,11 @@ public class SceneLoader : MonoBehaviour
 
             progressText.text = (progress * 100f).ToString("F0") + "%";
 
+            if(progressText.text == "100%")
+            {
+                progressText.text = "Initializing ...";
+            }
+
             //if(progressBarWidthEased >= 0.8)
             //{
             //    operation.
@@ -62,7 +67,7 @@ public class SceneLoader : MonoBehaviour
 
         }
 
-        progressText.text = "Initializing ...";
+       
 
         yield return new WaitForEndOfFrame();
     }
