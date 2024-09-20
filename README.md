@@ -16,6 +16,8 @@
 
 # Oceanest is now live on [itch.io](https://htamlive.itch.io/oceanest)!
 
+# Trailer is now on [YouTube](https://youtu.be/TdvYZlLc4hU)!
+
 # **Introduction**
 
 Oceanest: A Deep-Sea Odyssey
