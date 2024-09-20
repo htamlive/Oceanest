@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Ookii.Dialogs;
+using System.Collections;
 using System.Collections.Generic;
 using Tarodev;
 using UnityEngine;
@@ -98,9 +99,12 @@ public class Submarine : MonoBehaviour {
         Vector3 veloDiff = targetVeloVec - body.velocity;
         Vector3 movement = veloDiff * acceleration;
         body.AddForce(targetVeloVec * acceleration, ForceMode.Force);
-
     }
 
+    public void Freeze()
+    {
+        speedLevel = 0;
+    }
     public float CurrentVelocity()
     {
         var currentVelocity = body.velocity;
