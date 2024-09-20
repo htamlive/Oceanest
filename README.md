@@ -1,14 +1,18 @@
 # Oceanest-SubCliquey
  Game Development Final Project
 
-<!-- ## ![][image1]                    ![][image2]  -->
-
 # **Student Information**
 
 * 21125060 \- Nguyễn Minh Quang  
 * 21125170 \- Hồ Ngọc Vĩnh Phát  
 * 22125077 \- Nguyễn Hoàng Phúc  
 * 22125108 \- Vòng Vĩnh Toàn
+
+# Unity version: 2022.3.29f1
+
+# Poster
+
+![](README_Assets/posterOceanest.png)
 
 # **Introduction**
 
@@ -22,19 +26,23 @@ With your trusty submarine, you set off into the deep sea, eager to uncover secr
 
 Combining exploration, survival, and thrilling monster battles, *Oceanest* offers an unforgettable adventure that will push you to the limits. Will you uncover the ocean’s hidden mysteries, or will the deep sea become your final resting place?
 
-# Poster
 
-![](README_Assets/posterOceanest.png)
+# Winning objective
 
-# Unity version: 2022.3.29f1
+![](README_Assets/image38.png)
 
-# **Features**
+Upon completing the ultimate quest of defeating the final sea monster, your journey in *Oceanest* takes an unexpected, heartfelt turn. After the epic battle, you return to the old sea turtle, your mysterious guide throughout the adventure. Grateful for your bravery, the turtle releases an ancient power, forming a glowing wormhole that promises to lead you back home. But before you can leave, there’s one final task: navigating through the mischievous reef that has challenged you throughout your quest.
+
+With skill and determination, you pilot your submarine through the familiar twists and turns of the reef one last time. At the heart of this maze lies the energy ball, left behind by the sea turtle. As you take hold of it, you're suddenly teleported home, marking the end of your deep-sea adventure.
+
+But something unexpected happens. The treasure you sought isn’t a chest of gold or riches—it’s the return home itself. For a seasoned sailor like you, the ultimate treasure is finding your way back after one last incredible journey. It’s a fitting end to a glorious series of adventures, a peaceful return to where it all began, proving that sometimes, the greatest treasure is the journey itself.
+
+# Features
 
 ## 1\. GUI
 
 ### 1.1. Dynamic Menu
 
-<!-- ![][image3] -->
 ![](README_Assets/image7.png)
 
 When players open *Oceanest*, they are greeted with an inspiring and immersive menu screen that perfectly captures the deep-sea theme of the game. The background is a stunning blue, evoking the mysterious depths of the ocean. Dark waters are contrasted by vibrant schools of fish, lively coral reefs, and swaying seaweed, all gently moving as if alive. At the top left corner, the *Oceanest* logo is proudly displayed, setting the tone for the epic underwater adventure ahead.
@@ -50,9 +58,16 @@ The menu consists of five options, presented as radio buttons in a top-to-bottom
 
 Each menu option is crafted to give players an easy, smooth experience as they prepare to dive into the ocean's depths or return to shore.
 
-### 1.2. Pause Screen
+### 1.2. Parallaxing
 
-<!-- ![][image4] -->
+![](README_Assets/image36.png)
+
+We use a technique called parallaxing to create a more dynamic and engaging menu screen. Parallaxing involves using multiple 2D layers that are arranged in 3D space, similar to how billboards are set up. These layers are designed to give the illusion of depth and distance as the camera moves.
+
+The layers are placed at different distances from the camera and move at different speeds. When the camera, which is set in orthogonal mode, shifts position, the layers move at varying rates. Layers that are closer to the camera move faster than those further away. This difference in movement speeds creates a sense of depth and makes the scene feel more three-dimensional.
+
+### 1.3. Pause Screen
+
 ![](README_Assets/image26.png)
 
 The pause screen in *Oceanest* is designed to let players take a break easily. When the game is paused, the screen is covered by a pitch-black overlay that darkens everything in the background, putting full focus on the menu options. This strong contrast makes it clear that the game is paused without fully stopping your progress.
@@ -65,9 +80,8 @@ The pause menu offers three key buttons, arranged from top to bottom: Continue, 
 
 This straightforward pause screen keeps everything clear and easy to use, allowing players to quickly take action and get back into their deep-sea adventure.
 
-### 1.3. Winning Screen
+### 1.4. Winning Screen
 
-<!-- ![][image5] -->
 ![](README_Assets/image19.png)
 
 The winning screen in *Oceanest* is designed to give players a moment of triumph after completing their challenge. The screen is covered with a black overlay, creating a calm and focused atmosphere. At the center, the words "YOU WIN" appear in bright golden letters, slowly fading in to emphasize the victory. Right below it, there’s a single button labeled "Return to Menu."
@@ -76,14 +90,21 @@ The winning screen in *Oceanest* is designed to give players a moment of triumph
 
 This straightforward winning screen keeps the focus on celebrating the player's success while providing a quick path back to the main menu.
 
-### 1.4. Menu Setting {#1.4.-menu-setting}
+### 1.5. Game over scene
+
+![](README_Assets/image4.png)
+
+The game shows a distinct Game over scene that activates when the player’s character runs out of HP, signaling the end of the current gameplay session. Upon reaching this point, the screen transitions to a dedicated game over sequence, visually informing the player of their defeat.
+
+In this scene, two primary options are presented to the player, allowing them to choose how they wish to proceed. The first option provides the ability to immediately restart the game, offering a seamless return to gameplay for those who wish to retry without delay. The second option allows the player to return to the main menu, providing a way to step back from the game and explore other options, such as reviewing settings, choosing a different game mode, or exiting altogether.
+
+The "Game Over" text is animated in a dynamic and engaging way, gradually appearing on the screen. This gradual reveal adds a sense of impact and emphasizes the finality of the moment, enhancing the emotional weight of the player's defeat. The combination of these elements creates an intuitive and polished experience that smoothly transitions players from gameplay to decision-making.
+
+### 1.6. Menu Setting
 
 The game features a comprehensive menu setting system that allows players to customize various aspects of the game’s configuration to suit their preferences. Players can access the settings menu through two main pathways: either by selecting the "Settings" button from the main menu prior to starting the game, or by navigating to the settings from the pause screen during gameplay. This flexibility ensures that players can make adjustments both before and during their gaming experience, without interrupting the flow of the game.
 
-<!-- ![][image6] -->
 ![](README_Assets/image18.png)
-
-<!-- ![][image7] -->
 ![](README_Assets/image15.png)
 
 Within the settings menu, players are provided with options to adjust both the music volume and the sound effect volume independently. This allows for a personalized auditory experience, catering to different preferences, whether players want to immerse themselves in the game's music, focus more on the sound effects, or balance both elements. These settings are designed to enhance user control, ensuring that the game's audio experience aligns with individual player preferences for maximum enjoyment.
@@ -92,7 +113,6 @@ Within the settings menu, players are provided with options to adjust both the m
 
 ### 2.1. Submarine control
 
-<!-- ![][image8] -->
 ![](README_Assets/image12.png)
 
 In *Oceanest*, controlling your submarine and managing your actions is simple with a few easy-to-remember keys. Here's how you can navigate and interact with the game:
@@ -105,9 +125,12 @@ In *Oceanest*, controlling your submarine and managing your actions is simple wi
 * **Esc**: Pause the game whenever you need a break.  
 * **P**: Capture a screenshot of your gameplay while also saving your progress into a steganographic saved image.
 
-### 2.2. Missiles
+### 2.2. Submarine self-balancing when disoriented
 
-<!-- ![][image9] -->
+To prevent the submarine from rotating around its forward vector while ensuring smooth movement, we ensure it consistently returns to a neutral angle (0 degrees). When the submarine pitches up or down using the ‘w’ or ‘s’ keys, it will automatically rotate back to the neutral position (0 degrees) along its right vector after the key is released. To do that, we calculate the angle distance by subtracting the target angle (0 degrees) from the current angle, then the submarine will rotate toward the angle distance. The larger the distance is, the faster the submarine rotates, so it can rotate smoothly. We use the forward vector and right vector of the submarine itself (not global vectors) to identify the rotation axis.
+
+### 2.3. Missiles
+
 ![](README_Assets/image39.png)
 
 Missiles are your primary and most powerful weapon for hunting down the sea monsters that lurk in the deep ocean. They are crucial for battling these formidable creatures and are the only weapon you have at your disposal.
@@ -118,11 +141,10 @@ One important thing to note is that, because these sea creatures are unknown to 
 
 The missile system is designed to be straightforward and effective. By aiming carefully and using your missiles wisely, you can bring down even the toughest sea monsters and continue your exploration of the mysterious deep sea.
 
-### 2.3. Shop and Upgrades
+### 2.4. Shop and Upgrades
 
 The shop is where players can upgrade their submarine to improve their chances in battle. There are two main upgrades available, each offering a unique benefit to help you in your adventure.
 
-<!-- ![][image10] -->
 ![](README_Assets/image22.png)
 
 1. **Tracking Missiles**  
@@ -134,9 +156,8 @@ At the beginning of the game, players will only have enough coins to purchase on
 
 With these upgrades, you can enhance your submarine's combat abilities, making it more effective in battle and better prepared for the challenges that lie ahead in the deep sea.
 
-### 2.4. Boss
+### 2.5. Boss
 
-<!-- ![][image11] -->
 ![](README_Assets/image9.png)
 
 For the boss encounter in the game, a free asset has been utilized to represent the Giant Worm Boss, a choice made for both time-saving and convenience. By incorporating this premade asset, development time is reduced, allowing for a quicker integration of the boss into the game while maintaining the necessary level of detail and visual quality.
@@ -148,10 +169,19 @@ Upon entering the boss room, the Giant Worm Boss emerges, initiating an intense 
 
 The first strategy is based on randomness. In this mode, the boss appears at unpredictable locations within the room and attacks in a random direction. This approach keeps the player on edge, requiring them to stay alert and react quickly, as the boss’s movements and attacks are difficult to anticipate.
 
-<!-- ![][image13] -->
 ![](README_Assets/image31.png)
 
 The second strategy is a frontal attack, where the boss employs a more calculated approach. Here, the Giant Worm Boss predicts the submarine's future position and emerges directly in front of it, launching a precise and forceful strike. This creates a dynamic and challenging confrontation, as players must skillfully maneuver to avoid being caught by the boss’s well-timed attacks.
+
+### 2.6. Old Sea Turtle NPC
+
+![](README_Assets/image40.png)
+
+In the game, the Old Sea Turtle NPC plays a key role in the player’s early interactions, situated in the first room, just behind a reef, as part of the underwater environment. This NPC serves not only as a character of interest but also as a guide to the player during their initial gameplay experience. The Old Sea Turtle is programmed with three distinct dialogue scripts, each designed for different interactions. 
+
+The first script is used to greet the player, establishing a welcoming tone. The second offers advice, providing guidance or important information necessary for progressing through the game. The final script is a “thank you,” likely triggered after defeating the boss, creating a sense of closure and rewarding the player’s engagement with the NPC.
+
+To enhance the interaction experience, a visual marker is used to draw attention to the NPC when the player approaches. This marker is animated to pop up as the player comes within a certain proximity to the Old Sea Turtle, making it clear that an interaction is available. The marker stands out from the underwater setting by utilizing a special rendering technique: a secondary camera is employed to render the marker separately, which allows the water effect shader to be erased from the marker itself. This ensures the marker remains visible and distinct, despite the surrounding underwater environment, enhancing the player’s ability to notice and interact with the NPC effectively.
 
 ## 3\. Interactive Tutorial
 
@@ -159,29 +189,24 @@ The Interactive Tutorial provides players with a hands-on guide to mastering the
 
 1. **Steering the Submarine**  
    The tutorial first introduces basic steering controls. Players will learn to move the submarine left and right by using the **A** and **D** keys.  
-   <!-- *![][image14]* -->
    ![](README_Assets/image11.png)
 2. **Moving Up and Down**  
    Next, players are taught how to control the submarine’s depth. Use **W** to rise toward the surface and **S** to dive deeper into the sea.  
-   <!-- *![][image15]*   -->
    ![](README_Assets/image20.png)
 3. **Braking and Boosting**  
    The tutorial then explains how to adjust the submarine’s speed. Press **Q** to brake and slow down, or **E** to boost and increase your speed.  
-   <!-- *![][image16]*   -->
    ![](README_Assets/image17.png)
 4. **Firing a Missile**  
    Players are shown how to attack enemies using missiles. Press **J** to fire a missile at a target.  
-   <!-- ![][image17]   -->
    ![](README_Assets/image37.png)
 5. **Accessing the Inventory**  
    Finally, the tutorial demonstrates how to open the inventory. Press **I** to access the shop and inventory for upgrades and equipment.  
-   <!-- *![][image18]![][image19]* -->
+
    ![](README_Assets/image2.png)
    ![](README_Assets/image5.png)
 
 Once players have successfully followed each instruction, a final dialog appears, letting them know the tutorial is complete. This dialog includes a button to return to the main menu.
 
-<!-- ![][image20] -->
 ![](README_Assets/image6.png)
 
 # **Advanced Features**
@@ -194,13 +219,11 @@ By using a steganographic algorithm, the game hides essential data—such as pla
 
 This system ensures a seamless experience, making it easy for players to transfer or share their game progress simply by saving and using a screenshot.
 
-<!-- **![][image21]** -->
 ![](README_Assets/image24.png)
 
 **A brief description of 'Steganography'**  
  **is embedded into a flower image with no noticeable difference**
 
-<!-- **![][image22]** -->
 ![](README_Assets/image16.png)
 
 **A steganographic image from our game with game save embedded. It reserves the quality of the image.**
@@ -221,31 +244,41 @@ No matter the platform or screen resolution, *Oceanest* adjusts to provide a smo
 
 The deep sea reef is a significant obstacle, marking the entrance to a crucial room that players must reach to progress in their adventure. This reef is not just a decorative part of the ocean floor; it serves as a real challenge, testing the player’s control of the submarine and their ability to navigate tricky underwater terrain. The narrow passages between sharp coral formations make it a dangerous area to pass through, and a careless mistake could result in a crash.
 
-<!-- ![][image23] -->
 ![](README_Assets/image8.png)
 
 If the submarine hits the reef, the player risks severe damage, potentially becoming stuck beneath the sea forever. This adds tension to the journey, as players must steer carefully and maintain control to avoid disaster. Despite its danger, the deep sea reef is an essential part of the game, presenting a challenge that adventurous players must overcome. It serves as a reminder that while the treasures of the deep ocean are great, the risks are equally significant.
 
 For those who seek the thrill of exploration and are ready to take on these obstacles, the reef becomes an exciting and inevitable part of their journey. It tests their patience and skill, making the victory of passing through all the more rewarding.
 
-## 2\. Fish Boids
 
-<!-- ![][image24] -->
+## 2\. Deep sea reef with parallel computing cube marching
+
+![](README_Assets/image10.png)
+
+The deep sea reef is a procedurally generated terrain that challenges players to control the submarine with precision and care. This reef acts as a test of skill, where players must navigate through narrow passages and avoid crashing into the surrounding terrain. The reef is created using a method called cube marching, where a custom noise function is applied to a 3D grid of points (or lattice). Each point in the grid has a value associated with it, representing whether it's inside or outside the terrain. A threshold is used to determine this distinction, defining whether each point belongs inside the solid reef or is part of the open water.
+
+For each cube in the 3D grid, we calculate a set of triangles that form the surface of the reef, separating the inside from the outside. The positions of these triangle vertices are adjusted based on the values at the grid points, using linear interpolation between the "in" and "out" points to make the surface smoother. This method gives the reef its detailed, natural look.
+
+Because each cube's triangle configuration is calculated independently, we can take advantage of parallel computing to speed up the process. By distributing the calculations across multiple threads, we significantly boost the efficiency of the terrain generation, especially for large, complex reef systems. Unity's Compute Shaders, which are optimized for tasks like this, allow us to harness the power of the GPU to handle these computations in parallel. The core implementation is found in the *MarchingCubes.compute* file, where the same technique used for fish boids is applied to the reef generation, allowing for smooth, real-time performance even when rendering vast underwater landscapes.
+
+This approach ensures that the deep sea reef is not only visually impressive but also challenging for players to navigate, adding to the overall excitement of the game as players attempt to skillfully maneuver their submarine through the treacherous underwater terrain.
+
+## 3\. Fish Boids
+
 ![](README_Assets/image1.png)
 
 The fish boids component in Oceanest is designed to emulate a vibrant underwater ecosystem. By simulating schools of fish with boid or flocking behavior, the game creates a dynamic and realistic marine environment. Each fish moves in groups, following natural patterns such as avoiding collisions with nearby fish, matching speed with their flockmates, and staying close to the group. This behavior not only adds depth to the underwater world but also enhances the overall immersive experience, making the ocean feel alive and bustling with activity.
 
-## 3\. Map
+## 4\. Map
 
 The map in *Oceanest* is a vast and intricate environment built from a large triangulated mesh. This mesh is designed with inverted normal vectors, creating a unique visual effect that is suitable for the game's underwater cave system setting. The map features a system of interconnected cave rooms and tunnels, each filled with vibrant, colorful details that stand out against the deep sea backdrop.
 
 The bright and varied colors not only make the environment visually striking but also help players navigate through the complex network of caves and tunnels. The design of the map ensures a rich and engaging exploration experience, inviting players to discover hidden areas and secrets as they journey through the underwater world
 
-<!-- **![][image25]**   -->
 ![](README_Assets/image28.png)
 **An overview of the total map cave system**
 
-## 4\. Ambience Sound
+## 5\. Ambience Sound
 
 The ambience sound plays a crucial role in creating the game's immersive atmosphere. The sounds are designed to evoke the feeling of being deep underwater, where the environment is mysterious and full of adventure.
 
@@ -253,7 +286,7 @@ The ambient sounds are crafted to reflect the deep sea’s unique environment. Y
 
 The choice of sounds enhances the adventurous feel of the game, making each dive into the ocean more thrilling. Whether you're hunting for treasures or facing off against giant sea creatures, the ambient sounds contribute to the feeling that you’re truly in an expansive and mysterious underwater world. This audio atmosphere is designed to draw you in, making every moment of exploration and combat feel more intense and engaging.
 
-## 5\. Sound Effects
+## 6\. Sound Effects
 
 In the game, sound effects play a crucial role in enhancing the overall player experience, particularly during moments of action and interaction. One of the key implementations is the sound of explosions triggered when missiles impact surfaces. This audio cue not only adds a layer of authenticity to the game but also amplifies the sense of intensity and excitement during combat sequences. The sharp and impactful explosion sounds provide immediate feedback to the player, reinforcing the power and consequence of each missile strike. This immersive element makes the player's journey more engaging, drawing them further into the action.
 
@@ -261,7 +294,6 @@ In the game, sound effects play a crucial role in enhancing the overall player e
 
 ## 1\. 3D model skeleton animation with hitbox
 
-<!-- ![][image26] -->
 ![](README_Assets/image13.png)
 
 The 3D model of the worm boss features skeleton animation, which allows for realistic movement and flexibility of the character. Each bone in the model's skeleton controls specific sections of the worm, creating smooth, natural motion during attacks and other actions. The hitbox system is directly tied to this skeletal structure, with the colliders being positioned based on the bones of the model. This ensures that the worm's hitboxes accurately follow its animated movements, allowing for precise detection of collisions during gameplay, such as when the boss is hit or interacts with the environment.
@@ -274,7 +306,6 @@ The shader applies a blue tint to all the pixels, reflecting the ambient blue co
 
 The use of this shader helps to enhance the overall mood of the game, making the underwater world look and feel more authentic. It adds to the sense of depth and immersion, ensuring that players experience the ocean in all its blue, mysterious beauty.
 
-<!-- ![][image27] -->
 ![](README_Assets/image3.png)
 
 Notice that the shader does not affect the GUI elements of the game.
@@ -327,136 +358,16 @@ The camera system is designed to enhance the player's immersion and provide a sm
 
 In addition to this primary setup, the game also features a secondary “deep camera,” which captures crucial depth information. This data is used to create custom shaders that simulate the way light behaves underwater, such as light absorption and scattering. These effects contribute to the game’s realism, making the ocean appear more authentic and adding depth to the visual experience.
 
-## 6\. Parallaxing
-
-<!-- ![][image31] -->
-![](README_Assets/image36.png)
-
-We use a technique called parallaxing to create a more dynamic and engaging menu screen. Parallaxing involves using multiple 2D layers that are arranged in 3D space, similar to how billboards are set up. These layers are designed to give the illusion of depth and distance as the camera moves.
-
-The layers are placed at different distances from the camera and move at different speeds. When the camera, which is set in orthogonal mode, shifts position, the layers move at varying rates. Layers that are closer to the camera move faster than those further away. This difference in movement speeds creates a sense of depth and makes the scene feel more three-dimensional.
-
-## 7\. Tracking missile
-
-The missile of the submarine can track the enemy by predicting the next position. The missile gets the current velocity, then multiplies it with the prediction time to get the predicted position.
-
-When emitting a missile, the missile chooses an object with the tag “Target” randomly and keeps track of it.
-
-To simulate the flight trajectory of a real-life missile. We make it oscillate with a preset deviation and frequency so that it does not fly in a straight line.
-
-# **Extended-deadline features**
-
-## 1\. Camera effects
-
 To further enhance the gameplay, *Oceanest* incorporates two important camera effects: **camera damping** and **camera shaking**.
 
 Camera damping is an effect that creates a smooth transition when turning the submarine. For example, when the player steers the submarine to the left, the camera shifts smoothly in that direction, giving the player a wider view of what’s happening on the left side. This effect not only improves the feel of the submarine’s movement but also provides additional visual information about the environment, helping players react more quickly to nearby obstacles or threats.
 
-<!-- ![][image32]   -->
 ![](README_Assets/image30.png)
 **The camera shifts smoothly to the right, placing the submarine slightly to the left, providing a better view of the right side**
 
 Camera shaking is another effect designed to increase immersion. When the submarine takes damage, whether from an attack by a sea monster or a collision with the underwater terrain, the camera will shake slightly. This subtle shaking effect makes the player feel more connected to the submarine, reinforcing the impact of the damage. It’s a visual and sensory cue that helps players recognize when they’ve made a mistake or when their submarine is in danger, adding tension and excitement to the gameplay.
 
 Together, these camera effects — dynamic following, depth capturing, damping, and shaking — combine to create an engaging and visually rich underwater experience. They not only enhance the player's control over the submarine but also contribute to the overall sense of realism and immersion in the deep-sea environment.
-
-## 2\. Submarine self-balancing when disoriented
-
-To prevent the submarine from rotating around its forward vector while ensuring smooth movement, we ensure it consistently returns to a neutral angle (0 degrees). When the submarine pitches up or down using the ‘w’ or ‘s’ keys, it will automatically rotate back to the neutral position (0 degrees) along its right vector after the key is released. To do that, we calculate the angle distance by subtracting the target angle (0 degrees) from the current angle, then the submarine will rotate toward the angle distance. The larger the distance is, the faster the submarine rotates, so it can rotate smoothly. We use the forward vector and right vector of the submarine itself (not global vectors) to identify the rotation axis.
-
-## 3\. Tracking missile improvement  
-
-The previous technique used a rigid body to get the velocity, however, this method does not always work because the enemy can have many components so it is better not to use a rigid body. Instead of using a rigid body to get velocity, we use the last position and current position to calculate current velocity. This method is better since we don’t have to put a rigid body to all components of the enemy.
-
-## 4\. Missile effects
-
-To improve the realisticness of missile emitting, we add reaction force so that the submarine will be pushed backward when emitting a missile. When a missile contacts an object, it will explode, start playing an explosion audio shot, and slightly shake the camera.
-
-## 5\. Deep sea reef with parallel computing cube marching
-
-<!-- ![][image33] -->
-![](README_Assets/image10.png)
-
-The deep sea reef is a procedurally generated terrain that challenges players to control the submarine with precision and care. This reef acts as a test of skill, where players must navigate through narrow passages and avoid crashing into the surrounding terrain. The reef is created using a method called cube marching, where a custom noise function is applied to a 3D grid of points (or lattice). Each point in the grid has a value associated with it, representing whether it's inside or outside the terrain. A threshold is used to determine this distinction, defining whether each point belongs inside the solid reef or is part of the open water.
-
-For each cube in the 3D grid, we calculate a set of triangles that form the surface of the reef, separating the inside from the outside. The positions of these triangle vertices are adjusted based on the values at the grid points, using linear interpolation between the "in" and "out" points to make the surface smoother. This method gives the reef its detailed, natural look.
-
-Because each cube's triangle configuration is calculated independently, we can take advantage of parallel computing to speed up the process. By distributing the calculations across multiple threads, we significantly boost the efficiency of the terrain generation, especially for large, complex reef systems. Unity's Compute Shaders, which are optimized for tasks like this, allow us to harness the power of the GPU to handle these computations in parallel. The core implementation is found in the *MarchingCubes.compute* file, where the same technique used for fish boids is applied to the reef generation, allowing for smooth, real-time performance even when rendering vast underwater landscapes.
-
-This approach ensures that the deep sea reef is not only visually impressive but also challenging for players to navigate, adding to the overall excitement of the game as players attempt to skillfully maneuver their submarine through the treacherous underwater terrain.
-
-## 6\. Game over scene
-
-<!-- ![][image34] -->
-![](README_Assets/image4.png)
-
-The game shows a distinct Game over scene that activates when the player’s character runs out of HP, signaling the end of the current gameplay session. Upon reaching this point, the screen transitions to a dedicated game over sequence, visually informing the player of their defeat.
-
-In this scene, two primary options are presented to the player, allowing them to choose how they wish to proceed. The first option provides the ability to immediately restart the game, offering a seamless return to gameplay for those who wish to retry without delay. The second option allows the player to return to the main menu, providing a way to step back from the game and explore other options, such as reviewing settings, choosing a different game mode, or exiting altogether.
-
-The "Game Over" text is animated in a dynamic and engaging way, gradually appearing on the screen. This gradual reveal adds a sense of impact and emphasizes the finality of the moment, enhancing the emotional weight of the player's defeat. The combination of these elements creates an intuitive and polished experience that smoothly transitions players from gameplay to decision-making.
-
-## 7\. Old Sea Turtle NPC
-
-<!-- ![][image35] -->
-![](README_Assets/image40.png)
-
-In the game, the Old Sea Turtle NPC plays a key role in the player’s early interactions, situated in the first room, just behind a reef, as part of the underwater environment. This NPC serves not only as a character of interest but also as a guide to the player during their initial gameplay experience. The Old Sea Turtle is programmed with three distinct dialogue scripts, each designed for different interactions. 
-
-The first script is used to greet the player, establishing a welcoming tone. The second offers advice, providing guidance or important information necessary for progressing through the game. The final script is a “thank you,” likely triggered after defeating the boss, creating a sense of closure and rewarding the player’s engagement with the NPC.
-
-To enhance the interaction experience, a visual marker is used to draw attention to the NPC when the player approaches. This marker is animated to pop up as the player comes within a certain proximity to the Old Sea Turtle, making it clear that an interaction is available. The marker stands out from the underwater setting by utilizing a special rendering technique: a secondary camera is employed to render the marker separately, which allows the water effect shader to be erased from the marker itself. This ensures the marker remains visible and distinct, despite the surrounding underwater environment, enhancing the player’s ability to notice and interact with the NPC effectively.
-
-## 8\. Loading screen
-
-<!-- ![][image36] -->
-![](README_Assets/image32.png)
-
-To enhance the overall player experience, a loading screen has been implemented to display the game's loading progress in real-time. This screen features a clear and visually appealing loading percentage indicator, allowing players to track the progress as the game prepares the upcoming content. By incorporating this feature, the game's interaction flow becomes smoother and more responsive, as players are kept informed about the loading process rather than facing an indefinite wait.
-
-The loading percentage ensures that players remain engaged during transitions between gameplay and other scenes, such as level changes or entering a new area. This increased visibility contributes to a more refined and professional feel, reducing any uncertainty or frustration that can occur from extended load times. Additionally, it provides reassurance that the game is actively processing, maintaining player focus and minimizing the potential for interruptions in their experience.
-
-## 9\. Decorations
-
-<!-- ![][image37] -->
-![](README_Assets/image23.png)
-
-To enhance the visual appeal and immersion of the game environment, several new decorations have been introduced to make the scene more vivid and engaging for players.
-
-The first decoration is a vintage diving helmet, a classic symbol of underwater exploration. Its presence hints at past voyages and the unknown depths, adding to the game’s atmosphere of discovery. The second item is a golden skull, which serves as a striking and mysterious element within the scene. The skull not only contributes to the sense of adventure but also suggests hidden treasures or ancient secrets buried in the depths.  A small pyramid is also introduced as another decorative piece, adding a touch of ancient history and enigma to the scene. Its geometric shape suggests an ancient civilization, reinforcing the theme of exploration and discovery that runs throughout the game.
-
-## 10\. Better HUD
-
-<!-- ![][image38] -->
-![](README_Assets/image33.png)
-
-The game's Heads-Up Display (HUD) has been designed to provide essential information to players in an intuitive and efficient manner, enhancing the overall gameplay experience. The layout is strategically organized to ensure that players can quickly access key details without being overwhelmed by on-screen elements, thus allowing them to remain focused on the game.
-
-<!-- ![][image39] -->
-![](README_Assets/image21.png)
-
-The health indicator is positioned at the top left of the screen, providing constant feedback on the player's current health status. This vital information is displayed prominently to ensure players can easily monitor their health during intense gameplay moments. Directly beneath the health indicator is the speedometer, which represents the speed mode of the submarine. This feature is crucial during underwater exploration and combat, as it allows players to adjust their movement speed based on the situation, whether they need to maneuver quickly or maintain a slower, more precise pace.
-
-<!-- ![][image40] -->
-![](README_Assets/image34.png)
-
-At the top center of the HUD, the boss health indicator is located. This health bar only appears when the player enters a boss room, giving them real-time feedback on the boss's remaining health during these intense encounters. The central placement ensures that players can focus on the ongoing battle while keeping an eye on the boss’s health, enabling better decision-making during the fight.
-
-In the top right corner, the remaining coin amount is displayed, indicating how much currency the player has left for in-game shopping. This feature is essential for players to keep track of their resources and make informed decisions about purchasing upgrades or items as they progress through the game.
-
-<!-- ![][image41] -->
-![](README_Assets/image25.png)
-
-## 11\. Winning objective
-
-<!-- ![][image42] -->
-![](README_Assets/image38.png)
-
-Upon completing the ultimate quest of defeating the final sea monster, your journey in *Oceanest* takes an unexpected, heartfelt turn. After the epic battle, you return to the old sea turtle, your mysterious guide throughout the adventure. Grateful for your bravery, the turtle releases an ancient power, forming a glowing wormhole that promises to lead you back home. But before you can leave, there’s one final task: navigating through the mischievous reef that has challenged you throughout your quest.
-
-With skill and determination, you pilot your submarine through the familiar twists and turns of the reef one last time. At the heart of this maze lies the energy ball, left behind by the sea turtle. As you take hold of it, you're suddenly teleported home, marking the end of your deep-sea adventure.
-
-But something unexpected happens. The treasure you sought isn’t a chest of gold or riches—it’s the return home itself. For a seasoned sailor like you, the ultimate treasure is finding your way back after one last incredible journey. It’s a fitting end to a glorious series of adventures, a peaceful return to where it all began, proving that sometimes, the greatest treasure is the journey itself.
 
 ## References
 
