@@ -17,6 +17,6 @@ public class SettingHandler : MonoBehaviour
 
     public void quitSetting()
     {
-        SceneManager.LoadScene("Menu");
+        SceneLoader.Instance.LoadLevel("Menu");
     }
 }

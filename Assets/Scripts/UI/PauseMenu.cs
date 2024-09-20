@@ -35,13 +35,13 @@ public class PauseMenu : MonoBehaviour
 
         GameManager.Instance.SavePlayerData();
 
-        SceneManager.LoadScene("Menu");
+        SceneLoader.Instance.LoadLevel("Menu");
     }
 
     public void RestartLevel()
     {
         Time.timeScale = 1f;
         GameDataManager.ResetData();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneLoader.Instance.LoadLevel(SceneManager.GetActiveScene().name);
     }
 }

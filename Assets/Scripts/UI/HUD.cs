@@ -69,7 +69,7 @@ public class HUD : MonoBehaviour
 
     void ResetScene()
     {
-        SceneManager.LoadScene(loadSceneName);
+        SceneLoader.Instance.LoadLevel(loadSceneName);
         //GameDataManager.ResetHealth();
         GameDataManager.ResetData();
     }

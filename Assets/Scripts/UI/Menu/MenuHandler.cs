@@ -27,13 +27,13 @@ public class MenuHandler : MonoBehaviour {
 
     public void LoadScene()
     {
-        SceneManager.LoadScene(playScreen);
+        SceneLoader.Instance.LoadLevel(playScreen);
     }
 
     public void EnterTutorial()
     {
         GameDataManager.EnterTutorialMode();
-        SceneManager.LoadScene("Tutorial");
+        SceneLoader.Instance.LoadLevel("Tutorial");
     }
 
     public void NewGame()

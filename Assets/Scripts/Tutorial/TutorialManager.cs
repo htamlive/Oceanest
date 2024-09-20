@@ -126,6 +126,6 @@ public class TutorialManager : MonoBehaviour
 
     public void ReturnToMenu()
     {
-        SceneManager.LoadScene("Menu");
+        SceneLoader.Instance.LoadLevel("Menu");
     }
 }

@@ -31,7 +31,7 @@ public class WinScreen : MonoBehaviour
     {
         Time.timeScale = 1f;
         GameDataManager.ResetData();
-        SceneManager.LoadScene("Menu");
+        SceneLoader.Instance.LoadLevel("Menu");
     }
 
 

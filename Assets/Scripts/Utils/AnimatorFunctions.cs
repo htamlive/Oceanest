@@ -61,7 +61,7 @@ public class AnimatorFunctions : MonoBehaviour
 
     public void LoadScene(string whichLevel)
     {
-        SceneManager.LoadScene(whichLevel);
+        SceneLoader.Instance.LoadLevel(whichLevel);
     }
 
     //Slow down or speed up the game's time scale!

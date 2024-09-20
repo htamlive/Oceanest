@@ -31,14 +31,14 @@ public class LoseScreen : MonoBehaviour
     {
         Time.timeScale = 1f;
         GameDataManager.ResetData();
-        SceneManager.LoadScene("Menu");
+        SceneLoader.Instance.LoadLevel("Menu");
     }
 
     public void Replay()
     {
         Time.timeScale = 1f;
         GameDataManager.ResetData();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneLoader.Instance.LoadLevel(SceneManager.GetActiveScene().name);
     }
 
 
