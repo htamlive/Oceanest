@@ -249,6 +249,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 870b23a19af6e5a4795455af847ec319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3959909067166591633 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2130601719787865584, guid: df8d8ece21523db458a2f29e11185ade, type: 3}
+  m_PrefabInstance: {fileID: 3126912839778496353}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4870491217636159097 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7562233564327444760, guid: df8d8ece21523db458a2f29e11185ade, type: 3}
@@ -526,10 +531,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2083279341506217086}
     - target: {fileID: 6100552709103579693, guid: b22e8fdacfb50a54296e09b13a6932db, type: 3}
-      propertyPath: camera
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6100552709103579693, guid: b22e8fdacfb50a54296e09b13a6932db, type: 3}
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 7187122937439126658}
@@ -540,15 +541,7 @@ PrefabInstance:
     - target: {fileID: 6100552709103579693, guid: b22e8fdacfb50a54296e09b13a6932db, type: 3}
       propertyPath: loseScreen
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6100552709103579693, guid: b22e8fdacfb50a54296e09b13a6932db, type: 3}
-      propertyPath: WiningPoint
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6100552709103579693, guid: b22e8fdacfb50a54296e09b13a6932db, type: 3}
-      propertyPath: audioPlayer
-      value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3959909067166591633}
     - target: {fileID: 6100552709103579693, guid: b22e8fdacfb50a54296e09b13a6932db, type: 3}
       propertyPath: dialogueBoxController
       value: 
@@ -556,10 +549,6 @@ PrefabInstance:
     - target: {fileID: 6100552709103579693, guid: b22e8fdacfb50a54296e09b13a6932db, type: 3}
       propertyPath: submarineStats.Array.size
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6100552709103579693, guid: b22e8fdacfb50a54296e09b13a6932db, type: 3}
-      propertyPath: submarineStats.Array.data[0]
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
