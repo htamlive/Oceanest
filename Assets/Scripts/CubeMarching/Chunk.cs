@@ -12,6 +12,7 @@ public class Chunk : MonoBehaviour {
     MeshFilter meshFilter;
     MeshRenderer meshRenderer;
     MeshCollider meshCollider;
+    Rigidbody rb;
     bool generateCollider;
 
     public void DestroyOrDisable () {
@@ -24,6 +25,27 @@ public class Chunk : MonoBehaviour {
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(LayerMask.LayerToName(collision.gameObject.layer));
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            StartCoroutine(UpdateCollider());
+        }
+    }
+
+    private IEnumerator UpdateCollider()
+    {
+        yield return new WaitForSeconds(0.1f);
+        meshCollider.enabled = false;
+        yield return new WaitForSeconds(5);
+        meshCollider.enabled = true;
+
+        yield return null;
+    }
+
+
+
     // Add components/get references in case lost (references can be lost when working in the editor)
     public void SetUp (Material mat, bool generateCollider) {
         this.generateCollider = generateCollider;
@@ -31,6 +53,7 @@ public class Chunk : MonoBehaviour {
         meshFilter = GetComponent<MeshFilter> ();
         meshRenderer = GetComponent<MeshRenderer> ();
         meshCollider = GetComponent<MeshCollider> ();
+        rb = GetComponent<Rigidbody> ();
 
         if (meshFilter == null) {
             meshFilter = gameObject.AddComponent<MeshFilter> ();
@@ -40,8 +63,16 @@ public class Chunk : MonoBehaviour {
             meshRenderer = gameObject.AddComponent<MeshRenderer> ();
         }
 
+        if (rb == null && generateCollider)
+        {
+            rb = gameObject.AddComponent<Rigidbody>();
+            rb.isKinematic = true;
+            rb.useGravity = false;
+        }
+
         if (meshCollider == null && generateCollider) {
             meshCollider = gameObject.AddComponent<MeshCollider> ();
+
         }
         if (meshCollider != null && !generateCollider) {
             DestroyImmediate (meshCollider);
