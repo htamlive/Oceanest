@@ -52,6 +52,7 @@ public class MenuHandler : MonoBehaviour {
     {
         if (GameDataManager.LoadStenoData())
         {
+            ResetButtonsStatus();
             LoadScene();
         }
     }

@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections;
 using SFB;
 using System;
+using static UnityEditor.LightingExplorerTableColumn;
 
 public static class SteganographyScreenshot
 {
@@ -68,6 +69,17 @@ public static class SteganographyScreenshot
                 int pixelIndex = i * 8 + bit;
                 Color32 pixel = pixels[pixelIndex];
                 pixel.a = (byte)((pixel.a & 0xFE) | ((dataByte >> bit) & 1));
+                pixels[pixelIndex] = pixel;
+            }
+        }
+
+        for(int i = dataBytes.Length * 8; i < texture.width * texture.height; i += 8)
+        {
+            for (int bit = 0; bit < 8; bit++)
+            {
+                int pixelIndex = i + bit;
+                Color32 pixel = pixels[pixelIndex];
+                pixel.a = (byte)(pixel.a & 0xFE);
                 pixels[pixelIndex] = pixel;
             }
         }
