@@ -3,7 +3,6 @@ using System.IO;
 using System.Collections;
 using SFB;
 using System;
-using static UnityEditor.LightingExplorerTableColumn;
 
 public static class SteganographyScreenshot
 {
