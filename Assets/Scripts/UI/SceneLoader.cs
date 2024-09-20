@@ -62,6 +62,8 @@ public class SceneLoader : MonoBehaviour
 
         }
 
+        progressText.text = "Initializing ...";
+
         yield return new WaitForEndOfFrame();
     }
 }
